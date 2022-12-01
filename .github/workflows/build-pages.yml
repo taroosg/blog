@@ -1,0 +1,50 @@
+name: Build Pages
+on:
+  issues:
+    types: [opened, edited]
+
+env:
+  owner: ${{github.repository_owner}}
+  repo: ${{github.event.repository.name}}
+  target_issue_id: ${{github.event.issue.id}}
+
+jobs:
+  build-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: View the github context
+        run: echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+
+      - name: View github-script context
+        uses: actions/github-script@v6
+        with:
+          script: console.log(context)
+
+      - name: Checkout blog repo
+        uses: actions/checkout@v3
+
+      - name: Install Octokit and Mustache
+        run: npm install @octokit/rest mustache
+
+      - name: Env test
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.log(process.env)
+
+      - name: Build pages
+        run: node src/build-pages.js
+
+      - name: Git setting
+        run: |
+          git config --local user.email "taro@example.dev"
+          git config --local user.name "${{github.actor}}"
+
+      - name: Commit and push pages
+        run: |
+          git add index.html posts/${{github.event.issue.id}}.html
+          git commit -m "update" -a
+          git pull
+          git push origin main

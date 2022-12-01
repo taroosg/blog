@@ -2,9 +2,7 @@ name: Build Pages
 on:
   issues:
     types: [opened, edited]
-  push:
-    branches:
-      - main
+
 env:
   owner: ${{github.repository_owner}}
   repo: ${{github.event.repository.name}}

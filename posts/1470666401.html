@@ -35,6 +35,8 @@
     <style>
       body {
         padding: 1rem;
+        max-width: 960px;
+        margin: 0 auto;
       }
 
       main>div>pre {
@@ -45,9 +47,16 @@
         overflow: auto;
       }
 
-      body>header>hgroup>h2>i {
+      body>header>hgroup>p>i {
         padding-left: 0.5em;
         padding-right: 0.3em;
+      }
+
+      header>nav>ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0;
       }
     </style>
   </head>
@@ -80,10 +89,10 @@
     </nav>
     <hgroup>
       <h1>Laravelでユニーク制約つけたらunique keyが長すぎた件</h1>
-      <h2><i class="fa-regular fa-calendar-days"></i>Dec 1st, 2022
+      <p><i class="fa-regular fa-calendar-days"></i>Dec 1st, 2022
         <i class="fa-solid fa-tag"></i>laravel
         <i class="fa-solid fa-tag"></i>php
-      </h2>
+      </p>
     </hgroup>
   </header>
 
@@ -94,13 +103,13 @@
 <li>マイグレーション実行したらエラーが出た．</li>
 </ul>
 <h2>マイグレーションファイル</h2>
-<div class="highlight highlight-text-adblock"><pre><span class="pl-k">$</span>table-&gt;unique(['hogehoge_id', 'fugafuga_piyopiyo_id']);</pre></div>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">$</span>table</span>-&gt;<span class="pl-en">unique</span>([<span class="pl-s">'hogehoge_id'</span>, <span class="pl-s">'fugafuga_piyopiyo_id'</span>]);</pre></div>
 <p>動かしたらエラーが出た．</p>
 <div class="highlight highlight-text-adblock"><pre>SQLSTATE[42000]: Syntax error or access violation: 1059 Identifier name 'hogehoge_user_id_fugafuga_piyopiyo_user_id_unique' is too long ...</pre></div>
 <p>長すぎるってさ(´・ω・｀)</p>
 <h2>解決策</h2>
 <p>ユニーク制約に名前をつけるといける．名前をつけないと Laravel 側で決めたルールに従って名前が決まるため，長すぎてエラーになることがある．</p>
-<div class="highlight highlight-text-adblock"><pre><span class="pl-k">$</span>table-&gt;unique(['hogehoge_id', 'fugafuga_piyopiyo_id'])-&gt;name("hogehoge_id_fugafuga_piyopiyo_id_unique");</pre></div>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">$</span>table</span>-&gt;<span class="pl-en">unique</span>([<span class="pl-s">'hogehoge_id'</span>, <span class="pl-s">'fugafuga_piyopiyo_id'</span>])-&gt;<span class="pl-en">name</span>("<span class="pl-s">hogehoge_id_fugafuga_piyopiyo_id_unique</span>");</pre></div>
 <h2>まとめ</h2>
 <p>テーブル名やカラム名が長いときは名前をつけておくとスムーズにいけるぞ！</p>
 <p>以上だ( `･ω･)b</p>

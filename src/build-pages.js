@@ -24,9 +24,10 @@ octokit.rest.issues.listForRepo({
     fs.writeFileSync("index.html", index_html, "utf8");
 
     // Build post
-    const target_issue = issues.data.filter((ti) => {
+    target_issue = issues.data.filter((ti) => {
       return ti.id == process.env.target_issue_id
-    })[0];
+    });
+    target_issue = target_issue[0]
 
     markdown = target_issue.body
     const issue_template = fs.readFileSync("templates/post.template.html", "utf8").toString();

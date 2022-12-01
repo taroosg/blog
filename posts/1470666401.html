@@ -86,8 +86,7 @@
 <h2>マイグレーションファイル</h2>
 <div class="highlight highlight-text-adblock"><pre><span class="pl-k">$</span>table-&gt;unique(['hogehoge_id', 'fugafuga_piyopiyo_id']);</pre></div>
 <p>動かしたらエラーが出た．</p>
-<div class="highlight highlight-text-adblock"><pre>SQLSTATE[42000]: Syntax error or access violation: 1059 Identifier name 'hogehoge_user_id_fugafuga_piyopiyo_user_id_unique' is too
-   long ...</pre></div>
+<div class="highlight highlight-text-adblock"><pre>SQLSTATE[42000]: Syntax error or access violation: 1059 Identifier name 'hogehoge_user_id_fugafuga_piyopiyo_user_id_unique' is too long ...</pre></div>
 <p>長すぎるってさ(´・ω・｀)</p>
 <h2>解決策</h2>
 <p>ユニーク制約に名前をつけるといける．名前をつけないと Laravel 側で決めたルールに従って名前が決まるため，長すぎてエラーになることがある．</p>

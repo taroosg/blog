@@ -35,6 +35,8 @@
     <style>
       body {
         padding: 1rem;
+        max-width: 960px;
+        margin: 0 auto;
       }
 
       main>div>pre {
@@ -45,9 +47,16 @@
         overflow: auto;
       }
 
-      body>header>hgroup>h2>i {
+      body>header>hgroup>p>i {
         padding-left: 0.5em;
         padding-right: 0.3em;
+      }
+
+      header>nav>ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0;
       }
     </style>
   </head>
@@ -80,11 +89,11 @@
     </nav>
     <hgroup>
       <h1>{{title}}</h1>
-      <h2><i class="fa-regular fa-calendar-days"></i>{{updated_at_short}}
+      <p><i class="fa-regular fa-calendar-days"></i>{{updated_at_short}}
         {{#labels}}
         <i class="fa-solid fa-tag"></i>{{name}}
         {{/labels}}
-      </h2>
+      </p>
     </hgroup>
   </header>
 

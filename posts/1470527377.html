@@ -35,6 +35,8 @@
     <style>
       body {
         padding: 1rem;
+        max-width: 960px;
+        margin: 0 auto;
       }
 
       main>div>pre {
@@ -45,9 +47,16 @@
         overflow: auto;
       }
 
-      body>header>hgroup>h2>i {
+      body>header>hgroup>p>i {
         padding-left: 0.5em;
         padding-right: 0.3em;
+      }
+
+      header>nav>ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0;
       }
     </style>
   </head>
@@ -80,10 +89,10 @@
     </nav>
     <hgroup>
       <h1>Laravelで複雑な名前のテーブルと連携する中間テーブルを作成する</h1>
-      <h2><i class="fa-regular fa-calendar-days"></i>Dec 1st, 2022
+      <p><i class="fa-regular fa-calendar-days"></i>Dec 1st, 2022
         <i class="fa-solid fa-tag"></i>laravel
         <i class="fa-solid fa-tag"></i>php
-      </h2>
+      </p>
     </hgroup>
   </header>
 
@@ -94,7 +103,7 @@
 <li>アンダースコアの位置がよくわからなくなりそうじゃね？？</li>
 </ul>
 <h2>マイグレーションファイル作成</h2>
-<p>いつものやつ（hoges テーブルと fugas テーブルで中間テーブル）</p>
+<p>いつものやつ（hoges テーブルと fugas テーブルで中間テーブル）で作成しようとすると，<code class="notranslate">_</code> が多くて区切りがよくわからなくなる．</p>
 <div class="highlight highlight-source-shell"><pre>php artisan make:migration create_hoge_fuga_table</pre></div>
 <h2>解決策</h2>
 <p><code class="notranslate">"</code> で囲って文字列形式で書ける．</p>

@@ -35,7 +35,7 @@ octokit.rest.issues.listForRepo({
         target_issue.issue_html = issue_html
         const issue_page = Mustache.render(issue_template, target_issue)
         console.log(issue_page);
-        fs.writeFileSync(__dirname + "/posts/" + process.env.target_issue_id + ".html", issue_page, "utf8");
-      })
+        fs.writeFileSync("posts/" + process.env.target_issue_id + ".html", issue_page, "utf8");
+      });
 
   });

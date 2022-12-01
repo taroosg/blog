@@ -20,11 +20,11 @@
   <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <meta property="og:title" content="taroosg/blog">
     <meta property="og:description" content="My Blog">
-    <meta property="og:type" content="Laravelで複雑な名前のテーブルと連携する中間テーブルを作成する">
+    <meta property="og:type" content="article">
     <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;2">
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/28992410?v=4">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@taroosg" />
 
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="icon.png">
@@ -44,7 +44,6 @@
 <body>
   <header>
     <nav>
-      <ul></ul>
       <ul>
         <li><a href="../"><i class="fa-solid fa-list-ol"></i></a></li>
         <li><a href="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;2"><i class="fa-solid fa-gear"></i></a></li>
@@ -73,7 +72,7 @@
 <div class="highlight highlight-source-shell"><pre>php artisan make:migration <span class="pl-s"><span class="pl-pds">"</span>create hoge fuga_piyo table<span class="pl-pds">"</span></span></pre></div>
 <h2>まとめ</h2>
 <p>同じ結果になるなら毎回ダブルクォーテーションで区切って書けば良さそう．</p>
-<p>以上である( `･ω･)b</p>
+<p>以上だ( `･ω･)b</p>
   </main>
 
 </body>
@@ -85,6 +84,8 @@
     font-size: 14px;
     line-height: var(--line-height);
     padding: var(--spacing);
+    max-width: 100vw;
+    overflow: auto;
   }
 
   body>header>hgroup>h2>i {

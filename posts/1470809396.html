@@ -88,7 +88,7 @@
     </nav>
     <hgroup>
       <h1>Deno のフレームワーク「Fresh」で爆速開発</h1>
-      <p><i class="fa-regular fa-calendar-days"></i>Dec 1st, 2022
+      <p><i class="fa-regular fa-calendar-days"></i>Dec 2nd, 2022
         <i class="fa-solid fa-tag"></i>typescript
         <i class="fa-solid fa-tag"></i>deno
         <i class="fa-solid fa-tag"></i>fresh
@@ -97,10 +97,13 @@
   </header>
 
   <main>
-    <h2>今回のネタ</h2>
+    <h2>はじめに</h2>
+<p>この記事は<a href="https://qiita.com/advent-calendar/2022/gsacademy" rel="nofollow">ジーズアカデミー Advent Calendar 2022</a>の 1 日目である．</p>
+<p>JavaScript 及び TypeScript のランタイム環境である <a href="https://deno.land/" rel="nofollow">Deno</a> のフレームワークである <a href="https://fresh.deno.dev/" rel="nofollow">Fresh</a> がすばらしいので推す．</p>
+<h2>今回のネタ</h2>
 <ul>
 <li>Deno のフレームワークである Fresh を使用してみた．</li>
-<li>環境構築からデプロイまでを爆速で行えて素晴らしかった．</li>
+<li>環境構築からデプロイまでを爆速で行える．</li>
 <li>おみくじとじゃんけんの実装とデプロイまでをハンズオン形式でまとめた．</li>
 </ul>
 <h2>成果物</h2>
@@ -136,7 +139,7 @@
 <p><a href="https://deno.land/manual@v1.28.2/getting_started/installation" rel="nofollow">https://deno.land/manual@v1.28.2/getting_started/installation</a></p>
 <h2>Fresh のプロジェクト作成</h2>
 <p>コマンド一発で OK．TailWindCSS を自動的に準備してくれるので使用する場合は y ですすめる．VS Code の設定もしてくれるのでこちらも必要に応じて y ですすめる．</p>
-<div class="highlight highlight-source-shell"><pre>deno run -A -r https://fresh.deno.dev PROJECT_NAME
+<div class="highlight highlight-source-shell"><pre class="notranslate">deno run -A -r https://fresh.deno.dev PROJECT_NAME
 
   🍋 Fresh: the next-gen web framework.
 
@@ -158,13 +161,13 @@ Happy hacking<span class="pl-k">!</span> 🦕
 <p>ドキュメントが親切なので見ながら進めれば間違いない．</p>
 <p><a href="https://fresh.deno.dev/docs/getting-started/create-a-project" rel="nofollow">https://fresh.deno.dev/docs/getting-started/create-a-project</a></p>
 <p>プロジェクトを作成したら以下コマンドで立ち上げる．停止させるときは <code class="notranslate">ctrl + c</code> で OK．</p>
-<div class="highlight highlight-source-shell"><pre>deno task start</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">deno task start</pre></div>
 <p>立ち上げるとカウンターの画面が表示される．このページは <code class="notranslate">index.tsx</code> で，ページ内で <code class="notranslate">islands/Counter</code> と <code class="notranslate">components/Button</code> を読み込んでいる．</p>
 <h2>ルーティングとページの作成</h2>
 <p>早速プロダクトの実装を進めていく．本記事ではおみくじとじゃんけんの処理を実装するが，Fresh はフルスタックのフレームワークであり，フロントエンドとサーバサイド双方の実装を行うことができる．</p>
 <p>おみくじはフロントエンドの実装，じゃんけんはサーバサイドの実装を行う．</p>
 <p>プロジェクト内は以下の構成となっている．</p>
-<div class="highlight highlight-text-adblock"><pre>.
+<div class="highlight highlight-text-adblock"><pre class="notranslate">.
 ├── README.md
 ├── components
 │   └── Button.tsx
@@ -193,7 +196,7 @@ Happy hacking<span class="pl-k">!</span> 🦕
 <li><code class="notranslate">routes/janken_page.tsx</code></li>
 </ul>
 <p>続いて，それぞれのファイルに下記の内容を記述する．</p>
-<div class="highlight highlight-source-tsx"><pre><span class="pl-c">// routes/omikuji_page.tsx</span>
+<div class="highlight highlight-source-tsx"><pre class="notranslate"><span class="pl-c">// routes/omikuji_page.tsx</span>
 
 <span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-smi">Head</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">"$fresh/runtime.ts"</span><span class="pl-kos">;</span>
 
@@ -207,7 +210,7 @@ Happy hacking<span class="pl-k">!</span> 🦕
     <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
   <span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-kos">}</span></pre></div>
-<div class="highlight highlight-source-tsx"><pre><span class="pl-c">// routes/janken_page.tsx</span>
+<div class="highlight highlight-source-tsx"><pre class="notranslate"><span class="pl-c">// routes/janken_page.tsx</span>
 
 <span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-smi">Head</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">"$fresh/runtime.ts"</span><span class="pl-kos">;</span>
 
@@ -231,7 +234,7 @@ Happy hacking<span class="pl-k">!</span> 🦕
 <p>続いて，おみくじの処理を書いてみよう．</p>
 <p>Fresh では，基本的に JavaScript を読み込まず，動的な処理が記述されているコンポーネントが含まれる場合のみ読み込む．</p>
 <p><code class="notranslate">islands</code> ディレクトリ以下におみくじ用のコンポーネントである <code class="notranslate">omikuji.tsx</code> を作成して以下の内容を記述しよう．</p>
-<div class="highlight highlight-source-tsx"><pre><span class="pl-c">// islands/omikuji.tsx</span>
+<div class="highlight highlight-source-tsx"><pre class="notranslate"><span class="pl-c">// islands/omikuji.tsx</span>
 
 <span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">useState</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">"preact/hooks"</span><span class="pl-kos">;</span>
 
@@ -251,7 +254,7 @@ Happy hacking<span class="pl-k">!</span> 🦕
   <span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-kos">}</span></pre></div>
 <p><code class="notranslate">routes/omikuji_page.tsx</code> の内容を以下のように編集する．</p>
-<div class="highlight highlight-source-tsx"><pre><span class="pl-c">// routes/omikuji_page.tsx</span>
+<div class="highlight highlight-source-tsx"><pre class="notranslate"><span class="pl-c">// routes/omikuji_page.tsx</span>
 
 <span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-smi">Head</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">"$fresh/runtime.ts"</span><span class="pl-kos">;</span>
 <span class="pl-k">import</span> <span class="pl-smi">Omikuji</span> <span class="pl-k">from</span> <span class="pl-s">"../islands/omikuji.tsx"</span><span class="pl-kos">;</span>
@@ -280,7 +283,7 @@ Happy hacking<span class="pl-k">!</span> 🦕
 </ol>
 <p>上記全てはサーバで実行され，構成された HTML のみがブラウザに渡される SSR の仕組みとなっている．</p>
 <p><code class="notranslate">routes/janken_page.tsx</code> を以下のように編集する．</p>
-<div class="highlight highlight-source-tsx"><pre><span class="pl-c">// routes/janken_page.tsx</span>
+<div class="highlight highlight-source-tsx"><pre class="notranslate"><span class="pl-c">// routes/janken_page.tsx</span>
 
 <span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-smi">Head</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">"$fresh/runtime.ts"</span><span class="pl-kos">;</span>
 <span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-smi">Handlers</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">"$fresh/server.ts"</span><span class="pl-kos">;</span>
@@ -373,7 +376,7 @@ Happy hacking<span class="pl-k">!</span> 🦕
 <p>ブラウザの操作だけで完結！すごい！</p>
 <h2>まとめ</h2>
 <p>本記事では Fresh を使用した基本的な実装を行い，デプロイまでの手順を解説した．</p>
-<p>Deno Deploy を含めて TypeScript での開発からデプロイまで全てを賄えるため非常に強力である．DB や外部 API との連携で完結する実装であればだいたい事足りそうな予感．</p>
+<p>Deno Deploy を含めて TypeScript での開発からデプロイまで全てを賄えるため非常に強力である．DB や外部 API との連携で完結する実装であればだいたい事足りそうな予感．個人開発とか全部これでいい気がしている．</p>
 <p>興味出たらぜひ触ってみよう！</p>
 <p>今回は以上だ(｀･ω･)b</p>
   </main>

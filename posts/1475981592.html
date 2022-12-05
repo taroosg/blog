@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JMVGDHQTB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-8JMVGDHQTB');
+  </script>
+
+  <meta charset="UTF-8">
+  <title>Laravel で多対多の相手を whereIn で指定したい</title>
+  <meta name="description" content="Notes on Programming.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title" content="Laravel で多対多の相手を whereIn で指定したい">
+  <meta property="og:description" content="Notes on Programming.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;40">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/28992410?v=4">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@taroosg" />
+
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <link rel="icon" href="../favicon.png">
+
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- Fontawsome -->
+  <script src="../js/01f767a9a9.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      padding: 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    main>div>pre {
+      font-size: 14px;
+      line-height: var(--line-height);
+      padding: var(--spacing);
+      max-width: 100vw;
+      overflow: auto;
+    }
+
+    body>header>hgroup>p>i {
+      padding-left: 0.5em;
+      padding-right: 0.3em;
+    }
+
+    header>nav>ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="../" aria-label="Link to top page.">
+            <i class="fa-solid fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/taroosg" target="_blank" aria-label="Link to Twitter page.">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/taroosg" target="_blank" aria-label="Link to GitHub page.">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;40" target="_blank" aria-label="Link to Issue page.">
+            <i class="fa-solid fa-gear"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <hgroup>
+      <h1>Laravel で多対多の相手を whereIn で指定したい</h1>
+      <p><i class="fa-regular fa-calendar-days"></i>Dec 5th, 2022
+        <i class="fa-solid fa-tag"></i>laravel
+        <i class="fa-solid fa-tag"></i>php
+        <i class="fa-solid fa-tag"></i>sql
+      </p>
+    </hgroup>
+  </header>
+
+  <main>
+    <p>意外と使う機会がなくてハマったので備忘録．</p>
+<h2>状況</h2>
+<ul>
+<li>articles テーブルと users テーブルが存在する．</li>
+<li>user は article に like することができ，user と article は多対多となっている．</li>
+<li>指定したユーザ（複数）が like した article のデータを取得したい．</li>
+</ul>
+<h2>テーブル構成</h2>
+<h3>articles</h3>
+<table role="table">
+<thead>
+<tr>
+<th>id</th>
+<th>text</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>hoge</td>
+</tr>
+<tr>
+<td>2</td>
+<td>fuga</td>
+</tr>
+<tr>
+<td>3</td>
+<td>piyo</td>
+</tr>
+<tr>
+<td>4</td>
+<td>foo</td>
+</tr>
+<tr>
+<td>5</td>
+<td>bar</td>
+</tr>
+<tr>
+<td>6</td>
+<td>baz</td>
+</tr>
+</tbody>
+</table>
+<h3>users</h3>
+<table role="table">
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Giorno</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Bucciarati</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mista</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Abbacchio</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Fugo</td>
+</tr>
+</tbody>
+</table>
+<h3>article_user</h3>
+<table role="table">
+<thead>
+<tr>
+<th>article_id</th>
+<th>user_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h2>解決策</h2>
+<p>例えば，article_user テーブルの user_id が 1, 2, 4 のものを取得したいとする．</p>
+<p>予め user の id の配列を作っておき，whereIn の第 2 引数を利用すればOK．</p>
+<div class="highlight highlight-text-html-php"><pre class="notranslate"><span class="pl-c">// user の id の配列を用意しておく．</span>
+<span class="pl-s1"><span class="pl-c1">$</span>users</span> = [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">4</span>];
+
+<span class="pl-c">// 第 2 引数にクエリを渡し，中間テーブルに whereIn を使う．</span>
+<span class="pl-s1"><span class="pl-c1">$</span>articles</span> = <span class="pl-v">Article</span>::<span class="pl-en">whereIn</span>(
+  <span class="pl-s">'id'</span>,
+  fn (<span class="pl-s1"><span class="pl-c1">$</span>query</span>) =&gt;
+  <span class="pl-s1"><span class="pl-c1">$</span>query</span>-&gt;<span class="pl-en">select</span>(<span class="pl-s">'article_id'</span>)
+    -&gt;<span class="pl-en">from</span>(<span class="pl-s">'article_user'</span>)
+    -&gt;<span class="pl-en">whereIn</span>(<span class="pl-s">'user_id'</span>, <span class="pl-s1"><span class="pl-c1">$</span>users</span>)
+);</pre></div>
+<p>以上だ( `･ω･)b</p>
+  </main>
+
+</body>
+
+</html>

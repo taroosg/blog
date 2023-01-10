@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JMVGDHQTB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-8JMVGDHQTB');
+  </script>
+
+  <meta charset="UTF-8">
+  <title>日本語と関数を活用してプロダクトを実装する</title>
+  <meta name="description" content="Notes on Programming.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title" content="日本語と関数を活用してプロダクトを実装する">
+  <meta property="og:description" content="Notes on Programming.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;45">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/28992410?v=4">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@taroosg" />
+
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <link rel="icon" href="../favicon.png">
+
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- Fontawsome -->
+  <script src="../js/01f767a9a9.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      padding: 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    main>div>pre {
+      font-size: 14px;
+      line-height: var(--line-height);
+      padding: var(--spacing);
+      max-width: 100vw;
+      overflow: auto;
+    }
+
+    body>header>hgroup>p>i {
+      padding-left: 0.5em;
+      padding-right: 0.3em;
+    }
+
+    header>nav>ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="../" aria-label="Link to top page.">
+            <i class="fa-solid fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/taroosg" target="_blank" aria-label="Link to Twitter page.">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/taroosg" target="_blank" aria-label="Link to GitHub page.">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;45" target="_blank" aria-label="Link to Issue page.">
+            <i class="fa-solid fa-gear"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <hgroup>
+      <h1>日本語と関数を活用してプロダクトを実装する</h1>
+      <p><i class="fa-regular fa-calendar-days"></i>Jan 10th, 2023
+        <i class="fa-solid fa-tag"></i>javascript
+        <i class="fa-solid fa-tag"></i>lifehack
+        <i class="fa-solid fa-tag"></i>programming
+      </p>
+    </hgroup>
+  </header>
+
+  <main>
+    <p>プロダクトをつくるとき，いきなりコードを書き始めるのは悪手である．</p>
+<p>本記事では，日本語で考えることの重要性と関数の活用の仕方を解説する．</p>
+<h2>プロダクトを作るときの流れ</h2>
+<ol>
+<li>完成図を具体的にイメージする．</li>
+<li>処理を細分化し，実装する機能・処理を明確にする（重要）．</li>
+<li>コードを書く．</li>
+</ol>
+<h2>イメージ</h2>
+<p>全体像をイメージしておく．イメージできないものは実装できない．</p>
+<ul>
+<li>画面には何が表示されているか．</li>
+<li>各ボタンなどをクリックしたら何が起こればよいのか．</li>
+<li>各動作によって，全体の目標が達成されるかどうか．</li>
+</ul>
+<p>方法は何でも良い．なにかのツールを使っても良いし，紙に手書きでも良い．</p>
+<h2>細分化する</h2>
+<p>細分化の目的は以下あたりだろうか．</p>
+<ul>
+<li>やるべきことを整理する．</li>
+<li>実装の難易度を下げる．</li>
+<li>ググりやすくする．</li>
+</ul>
+<p><strong>「細分化」で重要なのは日本語（母国語）の運用能力である．</strong></p>
+<p>例えば，HTML・CSS・JavaScript を使ってじゃんけんゲームのプロダクトを考える場合「じゃんけんをする処理」ではどんなコードを書けばよいのか明確ではない．明確でないコードを書くことは困難（というより無理）である．</p>
+<p>では「じゃんけんをする処理」を細分化してみよう．グーチョキパーをそれぞれ 0, 1, 2 で管理するようなルールとし，以下のように考える．</p>
+<div class="highlight highlight-text-adblock"><pre class="notranslate">じゃんけんをする処理
+├── 画面に「グー」「チョキ」「パー」ボタンを表示する
+├── ボタンをクリックしたら指定の処理を動かす処理
+├── プレイヤーが選択した手を取得する処理
+├── 敵の手を定めるためにランダムな数値を発生させる処理
+├── 数値をじゃんけんの手に変換する処理
+├── プレイヤーと敵の手から勝敗を算出する処理
+└── 結果を画面に表示する処理</pre></div>
+<p>ここでのポイントは「できるだけ細かくすること」である．各処理を見てそのままコードが書ける状態にしておくことが理想である．</p>
+<p>そして，細分化する際には「入力と出力を明確にする」のがオススメである．上記の例に対して入力と出力を加えると下記のようになる．</p>
+<div class="highlight highlight-text-adblock"><pre class="notranslate">じゃんけんをする処理
+├── 画面に「グー」「チョキ」「パー」ボタンを表示する
+├── ボタンをクリックしたら指定の処理を動かす処理
+├── プレイヤーが選択したボタンの値を取得する処理
+├── ⭐ 最小値と最大値を入力するとその間のランダムな数値を出力する処理
+├── ⭐ 数値を入力するとじゃんけんの手を出力する処理
+├── ⭐ プレイヤーの手（数値）と敵の手（数値）を入力すると勝敗を出力する処理
+└── 結果を画面に表示する処理</pre></div>
+<h2>コードを書く</h2>
+<p>首尾よく細分化できたらコードを書く．コードを書くときは「関数」を意識する．</p>
+<p>関数を活用することのメリットは以下だろうか．</p>
+<ul>
+<li>関数は入力値と出力値が定まるため，動作検証がしやすい．</li>
+<li>細分化されているため各関数はよりシンプルなコードになる．</li>
+<li>各関数で動作検証を行っておけば，関数を組み合わせた場合でも問題なく動作する．</li>
+</ul>
+<p><strong>関数のポイントは「入力値（引数）」と「出力値（戻り値）」である．考えるときは必ずこの 2 点を意識すること．</strong></p>
+<p>前項で細分化した文を見ながら式を書けば良い．各関数を作ったら合わせて動作検証もしておく．</p>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// 最小値と最大値を入力するとその間のランダムな数値を出力する関数</span>
+<span class="pl-k">const</span> <span class="pl-en">generateRandomNumber</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">min</span><span class="pl-kos">,</span> <span class="pl-s1">max</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-c1">~</span><span class="pl-c1">~</span><span class="pl-kos">(</span><span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">random</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">*</span> <span class="pl-kos">(</span><span class="pl-s1">max</span> <span class="pl-c1">-</span> <span class="pl-s1">min</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-c1">+</span> <span class="pl-s1">min</span><span class="pl-kos">;</span>
+
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-en">generateRandomNumber</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">2</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// 数値を入力するとじゃんけんの手を出力する関数</span>
+<span class="pl-k">const</span> <span class="pl-en">generateJankenHand</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">[</span><span class="pl-s">'グー'</span><span class="pl-kos">,</span> <span class="pl-s">'チョキ'</span><span class="pl-kos">,</span> <span class="pl-s">'パー'</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-s1">index</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-en">generateJankenHand</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-en">generateJankenHand</span><span class="pl-kos">(</span><span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-en">generateJankenHand</span><span class="pl-kos">(</span><span class="pl-c1">2</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// プレイヤーの手（数値）と敵の手（数値）を入力すると勝敗を出力する関数</span>
+<span class="pl-k">const</span> <span class="pl-en">generateResult</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">player_hand_index</span><span class="pl-kos">,</span> <span class="pl-s1">computer_hand_index</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">[</span>
+  <span class="pl-kos">[</span><span class="pl-s">'draw'</span><span class="pl-kos">,</span> <span class="pl-s">'win'</span><span class="pl-kos">,</span> <span class="pl-s">'lose'</span><span class="pl-kos">,</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-kos">[</span><span class="pl-s">'lose'</span><span class="pl-kos">,</span> <span class="pl-s">'draw'</span><span class="pl-kos">,</span> <span class="pl-s">'win'</span><span class="pl-kos">,</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-kos">[</span><span class="pl-s">'win'</span><span class="pl-kos">,</span> <span class="pl-s">'lose'</span><span class="pl-kos">,</span> <span class="pl-s">'draw'</span><span class="pl-kos">,</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+<span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-s1">player_hand_index</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-s1">computer_hand_index</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-en">generateResult</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-en">generateResult</span><span class="pl-kos">(</span><span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-en">generateResult</span><span class="pl-kos">(</span><span class="pl-c1">2</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p>あとは動作検証した関数をまとめて処理を実装すれば良い．</p>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-en">janken</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// プレイヤーが選択したボタンの値を取得する処理</span>
+  <span class="pl-k">const</span> <span class="pl-s1">player_hand_index</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">;</span>
+  <span class="pl-c">// 最小値と最大値を入力するとその間のランダムな数値を出力する処理</span>
+  <span class="pl-k">const</span> <span class="pl-s1">computer_hand_index</span> <span class="pl-c1">=</span> <span class="pl-en">generateRandomNumber</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">2</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-c">// 数値を入力するとじゃんけんの手を出力する処理</span>
+  <span class="pl-k">const</span> <span class="pl-s1">player_hand</span> <span class="pl-c1">=</span> <span class="pl-en">generateJankenHand</span><span class="pl-kos">(</span><span class="pl-s1">player_hand_index</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-k">const</span> <span class="pl-s1">computer_hand</span> <span class="pl-c1">=</span> <span class="pl-en">generateJankenHand</span><span class="pl-kos">(</span><span class="pl-s1">computer_hand_index</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-c">// プレイヤーの手（数値）と敵の手（数値）を入力すると勝敗を出力する処理</span>
+  <span class="pl-k">const</span> <span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-en">generateResult</span><span class="pl-kos">(</span><span class="pl-s1">player_hand_index</span><span class="pl-kos">,</span> <span class="pl-s1">computer_hand_index</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-c">// 結果を画面に表示する処理</span>
+  <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'player_hand'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">innerText</span> <span class="pl-c1">=</span> <span class="pl-s1">player_hand</span><span class="pl-kos">;</span>
+  <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'computer_hand'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">innerText</span> <span class="pl-c1">=</span> <span class="pl-s1">computer_hand</span><span class="pl-kos">;</span>
+  <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'result'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">innerText</span> <span class="pl-c1">=</span> <span class="pl-s1">result</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// ボタンをクリックしたら指定の処理を動かす処理</span>
+<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'buttons'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">'click'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">tagName</span> <span class="pl-c1">===</span> <span class="pl-s">'BUTTON'</span> ? <span class="pl-en">janken</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> : <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p>全体のコードは以下．</p>
+<ul>
+<li><a href="https://github.com/taroosg/20230110-lt">https://github.com/taroosg/20230110-lt</a></li>
+</ul>
+<h2>まとめ</h2>
+<p>今回はプロダクトを実装する際の手順を「日本語」「関数」に焦点を当てて解説した．</p>
+<ul>
+<li>全体のイメージをつくれ！</li>
+<li>処理を細分化せよ！細分化する際は「入力値」「出力値」を意識せよ！</li>
+<li>各処理を関数でつくれ！関数ができたら組み合わせよ！</li>
+</ul>
+<p>以上だ( `･ω･)b</p>
+  </main>
+
+</body>
+
+</html>

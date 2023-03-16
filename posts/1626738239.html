@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JMVGDHQTB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-8JMVGDHQTB');
+  </script>
+
+  <meta charset="UTF-8">
+  <title>今日から始めるChatGPT駆動開発</title>
+  <meta name="description" content="Notes on Programming.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title" content="今日から始めるChatGPT駆動開発">
+  <meta property="og:description" content="Notes on Programming.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;47">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/28992410?v=4">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@taroosg" />
+
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <link rel="icon" href="../favicon.png">
+
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- Fontawsome -->
+  <script src="../js/01f767a9a9.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      padding: 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    main>div>pre {
+      font-size: 14px;
+      line-height: var(--line-height);
+      padding: var(--spacing);
+      max-width: 100vw;
+      overflow: auto;
+    }
+
+    body>header>hgroup>p>i {
+      padding-left: 0.5em;
+      padding-right: 0.3em;
+    }
+
+    header>nav>ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="../" aria-label="Link to top page.">
+            <i class="fa-solid fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/taroosg" target="_blank" aria-label="Link to Twitter page.">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/taroosg" target="_blank" aria-label="Link to GitHub page.">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;47" target="_blank" aria-label="Link to Issue page.">
+            <i class="fa-solid fa-gear"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <hgroup>
+      <h1>今日から始めるChatGPT駆動開発</h1>
+      <p><i class="fa-regular fa-calendar-days"></i>Mar 16th, 2023
+        <i class="fa-solid fa-tag"></i>lifehack
+        <i class="fa-solid fa-tag"></i>programming
+      </p>
+    </hgroup>
+  </header>
+
+  <main>
+    <p>ChatGPT を用いて開発を加速しよう！</p>
+<h2>言いたいこと</h2>
+<ul>
+<li>ChatGPT はガンガン使おう．</li>
+<li>コード書けない（読めない）人間がプロダクトを作れるようにはならない．</li>
+<li>ChatGPT で重要なのは日本語（母国語）の運用能力である．</li>
+</ul>
+<h2>お題</h2>
+<p>HTML，CSS，JavaScript でじゃんけんのゲームをつくってみる．</p>
+<h2>やりたいことを日本語で書いてみる</h2>
+<p>下記のように ChatGPT に指示を出した．</p>
+<h3>入力</h3>
+<div class="highlight highlight-text-adblock"><pre class="notranslate">HTML，CSS，JavaScript を用いてじゃんけんのゲームを実装するにはどのように考えたら良いですか．
+仕様は下記とします．
+- 画面に「グー」「チョキ」「パー」の3つのボタンが存在する．
+- いずれかのボタンをクリックすると，コンピュータがランダムな手を出して対戦する．
+- コンピュータの出した手と対戦結果を画面に表示する．
+- 対戦の履歴を画面に表示する．履歴には「プレイヤーの出した手」「コンピュータの出した手」「対戦結果」の3つを表示する．</pre></div>
+<h3>出力（一部省略）</h3>
+<div class="highlight highlight-text-adblock"><pre class="notranslate">じゃんけんゲームを HTML、CSS、JavaScript を使って実装するには、次の手順に従ってください。
+
+HTMLの作成
+
+じゃんけんゲームのボタン、結果表示領域、対戦履歴表示領域を作成します。</pre></div>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">&gt;</span></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>"<span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">UTF-8</span>"<span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">viewport</span>" <span class="pl-c1">content</span>="<span class="pl-s">width=device-width, initial-scale=1.0</span>"<span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>じゃんけんゲーム<span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">h1</span><span class="pl-kos">&gt;</span>じゃんけんゲーム<span class="pl-kos">&lt;/</span><span class="pl-ent">h1</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">id</span>="<span class="pl-s">rock</span>"<span class="pl-kos">&gt;</span>グー<span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">id</span>="<span class="pl-s">scissors</span>"<span class="pl-kos">&gt;</span>チョキ<span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">id</span>="<span class="pl-s">paper</span>"<span class="pl-kos">&gt;</span>パー<span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>結果<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">id</span>="<span class="pl-s">result</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>対戦履歴<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">id</span>="<span class="pl-s">history</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">janken.js</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">&gt;</span></pre></div>
+<div class="highlight highlight-text-adblock"><pre class="notranslate">JavaScript の作成
+
+じゃんけんゲームのロジックを実装します。janken.js ファイルを作成し、HTML ファイルにリンクを追加します。
+
+janken.js の例：</pre></div>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">choices</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'グー'</span><span class="pl-kos">,</span> <span class="pl-s">'チョキ'</span><span class="pl-kos">,</span> <span class="pl-s">'パー'</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+
+<span class="pl-k">function</span> <span class="pl-en">getRandomChoice</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-s1">choices</span><span class="pl-kos">[</span><span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">floor</span><span class="pl-kos">(</span><span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">random</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">*</span> <span class="pl-s1">choices</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">)</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">function</span> <span class="pl-en">getWinner</span><span class="pl-kos">(</span><span class="pl-s1">playerChoice</span><span class="pl-kos">,</span> <span class="pl-s1">computerChoice</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">playerChoice</span> <span class="pl-c1">===</span> <span class="pl-s1">computerChoice</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-s">'引き分け'</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span>
+        <span class="pl-kos">(</span><span class="pl-s1">playerChoice</span> <span class="pl-c1">===</span> <span class="pl-s">'グー'</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-s1">computerChoice</span> <span class="pl-c1">===</span> <span class="pl-s">'チョキ'</span><span class="pl-kos">)</span> <span class="pl-c1">||</span>
+        <span class="pl-kos">(</span><span class="pl-s1">playerChoice</span> <span class="pl-c1">===</span> <span class="pl-s">'チョキ'</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-s1">computerChoice</span> <span class="pl-c1">===</span> <span class="pl-s">'パー'</span><span class="pl-kos">)</span> <span class="pl-c1">||</span>
+        <span class="pl-kos">(</span><span class="pl-s1">playerChoice</span> <span class="pl-c1">===</span> <span class="pl-s">'パー'</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-s1">computerChoice</span> <span class="pl-c1">===</span> <span class="pl-s">'グー'</span><span class="pl-kos">)</span>
+    <span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-s">'プレイヤー'</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">return</span> <span class="pl-s">'コンピュータ'</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">function</span> <span class="pl-en">play</span><span class="pl-kos">(</span><span class="pl-s1">playerChoice</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">computerChoice</span> <span class="pl-c1">=</span> <span class="pl-en">getRandomChoice</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-s1">winner</span> <span class="pl-c1">=</span> <span class="pl-en">getWinner</span><span class="pl-kos">(</span><span class="pl-s1">playerChoice</span><span class="pl-kos">,</span> <span class="pl-s1">computerChoice</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+    <span class="pl-k">const</span> <span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'result'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">result</span><span class="pl-kos">.</span><span class="pl-c1">textContent</span> <span class="pl-c1">=</span> <span class="pl-s">`プレイヤー: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">playerChoice</span><span class="pl-kos">}</span></span>, コンピュータ: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">computerChoice</span><span class="pl-kos">}</span></span>,結果: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">winner</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>
+
+   <span class="pl-k">const</span> <span class="pl-s1">history</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'history'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+   <span class="pl-k">const</span> <span class="pl-s1">historyItem</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">'li'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+   <span class="pl-s1">historyItem</span><span class="pl-kos">.</span><span class="pl-c1">textContent</span> <span class="pl-c1">=</span> <span class="pl-s">`プレイヤー: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">playerChoice</span><span class="pl-kos">}</span></span>, コンピュータ: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">computerChoice</span><span class="pl-kos">}</span></span>, 結果: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">winner</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>
+   <span class="pl-s1">history</span><span class="pl-kos">.</span><span class="pl-en">prepend</span><span class="pl-kos">(</span><span class="pl-s1">historyItem</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'rock'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">'click'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-en">play</span><span class="pl-kos">(</span><span class="pl-s">'グー'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'scissors'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">'click'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-en">play</span><span class="pl-kos">(</span><span class="pl-s">'チョキ'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'paper'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">'click'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-en">play</span><span class="pl-kos">(</span><span class="pl-s">'パー'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p>だいたい良さそうだけどいくつか気に入らない点がある．</p>
+<ul>
+<li>結果は配列で持ちたい．</li>
+<li>条件分岐が多くて見づらい．</li>
+<li>ロジックと画面表示が明確に分けられていない．</li>
+</ul>
+<h2>修正してみる</h2>
+<h3>入力</h3>
+<div class="highlight highlight-text-adblock"><pre class="notranslate">履歴の部分を配列で保存し，対戦するごとに「結果を追加した新しい配列」を作成して表示するようにできますか．</pre></div>
+<h3>出力</h3>
+<div class="highlight highlight-text-adblock"><pre class="notranslate">もちろんできます。履歴を配列で保存し、対戦するごとに結果を追加した新しい配列を作成して表示するように、janken.js を次のように変更します。</pre></div>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">choices</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'グー'</span><span class="pl-kos">,</span> <span class="pl-s">'チョキ'</span><span class="pl-kos">,</span> <span class="pl-s">'パー'</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">history</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+
+<span class="pl-k">function</span> <span class="pl-en">getRandomChoice</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-s1">choices</span><span class="pl-kos">[</span><span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">floor</span><span class="pl-kos">(</span><span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">random</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">*</span> <span class="pl-s1">choices</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">)</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">function</span> <span class="pl-en">getWinner</span><span class="pl-kos">(</span><span class="pl-s1">playerChoice</span><span class="pl-kos">,</span> <span class="pl-s1">computerChoice</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">playerChoice</span> <span class="pl-c1">===</span> <span class="pl-s1">computerChoice</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-s">'引き分け'</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span>
+        <span class="pl-kos">(</span><span class="pl-s1">playerChoice</span> <span class="pl-c1">===</span> <span class="pl-s">'グー'</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-s1">computerChoice</span> <span class="pl-c1">===</span> <span class="pl-s">'チョキ'</span><span class="pl-kos">)</span> <span class="pl-c1">||</span>
+        <span class="pl-kos">(</span><span class="pl-s1">playerChoice</span> <span class="pl-c1">===</span> <span class="pl-s">'チョキ'</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-s1">computerChoice</span> <span class="pl-c1">===</span> <span class="pl-s">'パー'</span><span class="pl-kos">)</span> <span class="pl-c1">||</span>
+        <span class="pl-kos">(</span><span class="pl-s1">playerChoice</span> <span class="pl-c1">===</span> <span class="pl-s">'パー'</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-s1">computerChoice</span> <span class="pl-c1">===</span> <span class="pl-s">'グー'</span><span class="pl-kos">)</span>
+    <span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-s">'プレイヤー'</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">return</span> <span class="pl-s">'コンピュータ'</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">function</span> <span class="pl-en">updateHistory</span><span class="pl-kos">(</span><span class="pl-s1">playerChoice</span><span class="pl-kos">,</span> <span class="pl-s1">computerChoice</span><span class="pl-kos">,</span> <span class="pl-s1">winner</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">newHistory</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> playerChoice<span class="pl-kos">,</span> computerChoice<span class="pl-kos">,</span> winner <span class="pl-kos">}</span><span class="pl-kos">;</span>
+    <span class="pl-s1">history</span><span class="pl-kos">.</span><span class="pl-en">unshift</span><span class="pl-kos">(</span><span class="pl-s1">newHistory</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">function</span> <span class="pl-en">displayHistory</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">historyElement</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'history'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">historyElement</span><span class="pl-kos">.</span><span class="pl-c1">innerHTML</span> <span class="pl-c1">=</span> <span class="pl-s">''</span><span class="pl-kos">;</span>
+
+    <span class="pl-s1">history</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-s1">item</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+        <span class="pl-k">const</span> <span class="pl-s1">listItem</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">'li'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-s1">listItem</span><span class="pl-kos">.</span><span class="pl-c1">textContent</span> <span class="pl-c1">=</span> <span class="pl-s">`プレイヤー: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">playerChoice</span><span class="pl-kos">}</span></span>, コンピュータ: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">computerChoice</span><span class="pl-kos">}</span></span>, 結果: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">winner</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>
+        <span class="pl-s1">historyElement</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-s1">listItem</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">function</span> <span class="pl-en">play</span><span class="pl-kos">(</span><span class="pl-s1">playerChoice</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">computerChoice</span> <span class="pl-c1">=</span> <span class="pl-en">getRandomChoice</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-s1">winner</span> <span class="pl-c1">=</span> <span class="pl-en">getWinner</span><span class="pl-kos">(</span><span class="pl-s1">playerChoice</span><span class="pl-kos">,</span> <span class="pl-s1">computerChoice</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+    <span class="pl-k">const</span> <span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'result'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">result</span><span class="pl-kos">.</span><span class="pl-c1">textContent</span> <span class="pl-c1">=</span> <span class="pl-s">`プレイヤー: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">playerChoice</span><span class="pl-kos">}</span></span>, コンピュータ: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">computerChoice</span><span class="pl-kos">}</span></span>, 結果: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">winner</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>
+
+    <span class="pl-en">updateHistory</span><span class="pl-kos">(</span><span class="pl-s1">playerChoice</span><span class="pl-kos">,</span> <span class="pl-s1">computerChoice</span><span class="pl-kos">,</span> <span class="pl-s1">winner</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-en">displayHistory</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'rock'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">'click'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-en">play</span><span class="pl-kos">(</span><span class="pl-s">'グー'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'scissors'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">'click'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-en">play</span><span class="pl-kos">(</span><span class="pl-s">'チョキ'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'paper'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">'click'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-en">play</span><span class="pl-kos">(</span><span class="pl-s">'パー'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-text-adblock"><pre class="notranslate">この変更では、履歴をhistory配列に保存し、対戦するごとに updateHistory 関数で結果を追加しています。
+そして、displayHistory 関数を使って履歴を表示します。
+この関数は、履歴配列をループして、対戦履歴を表示するリストアイテムを作成し、history 要素に追加します。
+play 関数が呼び出されるたびに、displayHistory 関数も呼び出され、最新の履歴が表示されます。</pre></div>
+<p>違う，そうじゃない（結果配列は破壊的に扱ってほしくない）．</p>
+<p>このように，処理全体を丸投げすると「動くけど実装の方針はおまかせ」な感じになる．</p>
+<h2>もう少し自分で考えてみる</h2>
+<p>大枠は良さそう（HTML 部分など）なので，処理の流れを自分で考えてみる．<g-emoji class="g-emoji" alias="star" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png">⭐</g-emoji>の部分を chatGPT に作成してもらうこととする．</p>
+<pre class="notranslate"><code class="notranslate">├── 画面に「グー」「チョキ」「パー」ボタンを表示する
+├── ボタンをクリックしたら指定の処理を動かす処理
+├── プレイヤーが選択したボタンの値を取得する処理
+├── 最小値と最大値を入力するとその間のランダムな数値を出力する処理
+├── 数値を入力するとじゃんけんの手を出力する処理
+├── プレイヤーの手（数値）と敵の手（数値）を入力すると勝敗を出力する処理
+├── ⭐ 「プレイヤーの手，敵の手，勝敗のオブジェクト」と「履歴の配列」を入力すると新しい履歴の配列を出力する処理
+└── 結果と履歴を画面に表示する処理
+</code></pre>
+<h3>入力</h3>
+<div class="highlight highlight-text-adblock"><pre class="notranslate">履歴を保存する配列を作成します．
+「結果のオブジェクト」と「履歴の配列」を入力すると結果のオブジェクトを履歴の配列に追加した新しい配列を出力する関数を JavaScript で作成してください．
+
+結果のオブジェクトは下記の形式です．
+
+{
+  myHand: 'グー',
+  enemyHand: 'チョキ',
+  winner: 'プレイヤー',
+}
+
+履歴の配列は下記の形式です．
+
+[
+  {
+    myHand: 'グー',
+    enemyHand: 'チョキ',
+    winner: 'プレイヤー',
+  },
+  {
+    myHand: 'グー',
+    enemyHand: 'チョキ',
+    winner: 'プレイヤー',
+  },
+  {
+    myHand: 'グー',
+    enemyHand: 'チョキ',
+    winner: 'プレイヤー',
+  },
+]
+
+なお，作成する際には，配列の破壊的処理を行わない実装にしてください．</pre></div>
+<h3>出力</h3>
+<div class="highlight highlight-text-adblock"><pre class="notranslate">破壊的処理を行わない方法で、結果のオブジェクトを履歴の配列に追加する関数を作成するには、以下のように実装します。</pre></div>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">function</span> <span class="pl-en">addToHistory</span><span class="pl-kos">(</span><span class="pl-s1">history</span><span class="pl-kos">,</span> <span class="pl-s1">result</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">[</span><span class="pl-s1">result</span><span class="pl-kos">,</span> ...<span class="pl-s1">history</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">myHand</span>: <span class="pl-s">'グー'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">enemyHand</span>: <span class="pl-s">'チョキ'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">winner</span>: <span class="pl-s">'プレイヤー'</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">history</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>
+    <span class="pl-kos">{</span>
+        <span class="pl-c1">myHand</span>: <span class="pl-s">'グー'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">enemyHand</span>: <span class="pl-s">'チョキ'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">winner</span>: <span class="pl-s">'プレイヤー'</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span>
+        <span class="pl-c1">myHand</span>: <span class="pl-s">'グー'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">enemyHand</span>: <span class="pl-s">'チョキ'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">winner</span>: <span class="pl-s">'プレイヤー'</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span>
+        <span class="pl-c1">myHand</span>: <span class="pl-s">'グー'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">enemyHand</span>: <span class="pl-s">'チョキ'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">winner</span>: <span class="pl-s">'プレイヤー'</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">]</span><span class="pl-kos">;</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">updatedHistory</span> <span class="pl-c1">=</span> <span class="pl-en">addToHistory</span><span class="pl-kos">(</span><span class="pl-s1">history</span><span class="pl-kos">,</span> <span class="pl-s1">result</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">updatedHistory</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-text-adblock"><pre class="notranslate">この実装では、addToHistory関数は現在の履歴配列 (history) と新しい結果のオブジェクト (result) を引数に取り、
+新しい結果のオブジェクトを履歴配列の先頭に追加した新しい配列を返します。
+スプレッド演算子...を使用して、元の配列を新しい配列に展開し、破壊的処理を回避しています。</pre></div>
+<p>ここでのポイントは以下である．</p>
+<ul>
+<li>実現したいことを理解していないとうまくいかない．</li>
+<li>処理の流れ（ロジック）は自分で考えたほうが良い（丸投げだとうまく追加修正できない）．</li>
+<li>「入力と出力を明確にした関数」に分割して ChatGPT に投げる．</li>
+</ul>
+<h2>ちなみに</h2>
+<div class="highlight highlight-text-adblock"><pre class="notranslate">同様の関数をRustで実装してください．</pre></div>
+<div class="highlight highlight-source-rust"><pre class="notranslate"><span class="pl-k">fn</span> <span class="pl-en">add_to_history</span><span class="pl-kos">(</span><span class="pl-s1">history</span><span class="pl-kos">:</span> <span class="pl-smi">Vec</span><span class="pl-kos">&lt;</span><span class="pl-kos">(</span><span class="pl-smi">String</span><span class="pl-kos">,</span> <span class="pl-smi">String</span><span class="pl-kos">,</span> <span class="pl-smi">String</span><span class="pl-kos">)</span><span class="pl-kos">&gt;</span><span class="pl-kos">,</span> <span class="pl-s1">result</span><span class="pl-kos">:</span> <span class="pl-kos">(</span><span class="pl-smi">String</span><span class="pl-kos">,</span> <span class="pl-smi">String</span><span class="pl-kos">,</span> <span class="pl-smi">String</span><span class="pl-kos">)</span><span class="pl-kos">)</span> -&gt; <span class="pl-smi">Vec</span><span class="pl-kos">&lt;</span><span class="pl-kos">(</span><span class="pl-smi">String</span><span class="pl-kos">,</span> <span class="pl-smi">String</span><span class="pl-kos">,</span> <span class="pl-smi">String</span><span class="pl-kos">)</span><span class="pl-kos">&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-k">let</span> <span class="pl-k">mut</span> new_history = <span class="pl-en">vec</span><span class="pl-en">!</span><span class="pl-kos">[</span>result<span class="pl-kos">]</span><span class="pl-kos">;</span>
+    new_history<span class="pl-kos">.</span><span class="pl-en">extend</span><span class="pl-kos">(</span>history<span class="pl-kos">)</span><span class="pl-kos">;</span>
+    new_history
+<span class="pl-kos">}</span>
+
+<span class="pl-k">fn</span> <span class="pl-en">main</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">let</span> result = <span class="pl-kos">(</span>
+        <span class="pl-smi">String</span><span class="pl-kos">::</span><span class="pl-en">from</span><span class="pl-kos">(</span><span class="pl-s">"グー"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+        <span class="pl-smi">String</span><span class="pl-kos">::</span><span class="pl-en">from</span><span class="pl-kos">(</span><span class="pl-s">"チョキ"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+        <span class="pl-smi">String</span><span class="pl-kos">::</span><span class="pl-en">from</span><span class="pl-kos">(</span><span class="pl-s">"プレイヤー"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+    <span class="pl-k">let</span> history = <span class="pl-en">vec</span><span class="pl-en">!</span><span class="pl-kos">[</span>
+        <span class="pl-kos">(</span>
+            <span class="pl-v">String</span>::from<span class="pl-kos">(</span><span class="pl-s">"グー"</span><span class="pl-kos">)</span>,
+            <span class="pl-v">String</span>::from<span class="pl-kos">(</span><span class="pl-s">"チョキ"</span><span class="pl-kos">)</span>,
+            <span class="pl-v">String</span>::from<span class="pl-kos">(</span><span class="pl-s">"プレイヤー"</span><span class="pl-kos">)</span>,
+        <span class="pl-kos">)</span>,
+        <span class="pl-kos">(</span>
+            <span class="pl-v">String</span>::from<span class="pl-kos">(</span><span class="pl-s">"グー"</span><span class="pl-kos">)</span>,
+            <span class="pl-v">String</span>::from<span class="pl-kos">(</span><span class="pl-s">"チョキ"</span><span class="pl-kos">)</span>,
+            <span class="pl-v">String</span>::from<span class="pl-kos">(</span><span class="pl-s">"プレイヤー"</span><span class="pl-kos">)</span>,
+        <span class="pl-kos">)</span>,
+        <span class="pl-kos">(</span>
+            <span class="pl-v">String</span>::from<span class="pl-kos">(</span><span class="pl-s">"グー"</span><span class="pl-kos">)</span>,
+            <span class="pl-v">String</span>::from<span class="pl-kos">(</span><span class="pl-s">"チョキ"</span><span class="pl-kos">)</span>,
+            <span class="pl-v">String</span>::from<span class="pl-kos">(</span><span class="pl-s">"プレイヤー"</span><span class="pl-kos">)</span>,
+        <span class="pl-kos">)</span>,
+    <span class="pl-kos">]</span><span class="pl-kos">;</span>
+
+    <span class="pl-k">let</span> updated_history = <span class="pl-en">add_to_history</span><span class="pl-kos">(</span>history<span class="pl-kos">,</span> result<span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-en">println</span><span class="pl-en">!</span><span class="pl-kos">(</span><span class="pl-s">"{:?}"</span>, updated_history<span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<p>ああ～いいっすね～</p>
+<h2>まとめ</h2>
+<ul>
+<li>丸投げはちょっとキツい．</li>
+<li>「やりたいこと」「手順」を明確にする．処理を関数単位に分割するとうまくいきやすい．</li>
+<li>考え方の道筋が立てられないと有効活用できないかも．</li>
+<li>判断するのは人間．</li>
+<li>（ググり能力の高い人は特に強い）</li>
+</ul>
+  </main>
+
+</body>
+
+</html>

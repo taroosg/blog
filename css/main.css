@@ -1034,3 +1034,7 @@ body .contains-task-list:dir(rtl) .task-list-item-checkbox {
 body ::-webkit-calendar-picker-indicator {
   filter: invert(50%);
 }
+
+*::selection {
+  background-color: rgba(56, 139, 253, 0.4);
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JMVGDHQTB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-8JMVGDHQTB');
+  </script>
+
+  <meta charset="UTF-8">
+  <title>検証ツールで体験する Web アプリケーション</title>
+  <meta name="description" content="Notes on Programming.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title" content="検証ツールで体験する Web アプリケーション">
+  <meta property="og:description" content="Notes on Programming.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;50">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/28992410?v=4">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@taroosg" />
+
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <link rel="icon" href="../favicon.png">
+
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- Fontawsome -->
+  <script src="../js/01f767a9a9.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      padding: 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    main>div>pre {
+      font-size: 14px;
+      line-height: var(--line-height);
+      padding: var(--spacing);
+      max-width: 100vw;
+      overflow: auto;
+    }
+
+    body>header>hgroup>p>i {
+      padding-left: 0.5em;
+      padding-right: 0.3em;
+    }
+
+    header>nav>ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="../" aria-label="Link to top page.">
+            <i class="fa-solid fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/taroosg" target="_blank" aria-label="Link to Twitter page.">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/taroosg" target="_blank" aria-label="Link to GitHub page.">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;50" target="_blank" aria-label="Link to Issue page.">
+            <i class="fa-solid fa-gear"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <hgroup>
+      <h1>検証ツールで体験する Web アプリケーション</h1>
+      <p><i class="fa-regular fa-calendar-days"></i>Mar 21st, 2023
+      </p>
+    </hgroup>
+  </header>
+
+  <main>
+    <h2>本講座の狙い</h2>
+<p>本講座はこれから開発にチャレンジする初心者に向けた講座で，Web アプリケーションの開発に興味を持ってもらうことを目的としている．検証ツールを使って，Web アプリケーションの基本要素である HTML，CSS，JavaScript を体験し，実際に手を動かすことで理解を深めていく．</p>
+<h2>Web アプリケーションとは</h2>
+<h3>サーバとクライアント</h3>
+<ul>
+<li>Web アプリケーションは，インターネットを介してサーバとクライアントが通信することで動作する</li>
+<li>サーバはデータやプログラムを提供し，クライアントはそれらを利用してユーザーに表示・操作する役割を担っている
+<ul>
+<li>サーバ：データベース，バックエンドプログラム</li>
+<li>クライアント：ブラウザ，フロントエンドプログラム</li>
+</ul>
+</li>
+</ul>
+<h3>ブラウザで動作する仕組み</h3>
+<ul>
+<li>Web アプリケーションは，主にブラウザ上で動作する</li>
+<li>HTML，CSS，JavaScript がそれぞれ役割を持っており，HTML がページの構造を，CSS がデザインを，JavaScript が動的な機能を担当している</li>
+</ul>
+<h2>検証ツールの使い方</h2>
+<ul>
+<li>検証ツールは，ブラウザに組み込まれている開発者向けのツールである．</li>
+<li>HTML，CSS，JavaScript をリアルタイムで編集・デバッグできる．</li>
+<li>主要なブラウザで利用可能で，右クリックして「検証」を選択するか，キーボードショートカットで開くことができる．</li>
+<li>Elementsタブ，Console タブ，Network タブなど，さまざまな機能が用意されている．</li>
+</ul>
+<p>実際に下記のページを開き，検証ツールを開いてみよう．</p>
+<p><a href="https://gsacademy.jp/" rel="nofollow">https://gsacademy.jp/</a></p>
+<h2>HTML</h2>
+<h3>HTML を見てみる</h3>
+<ul>
+<li>検証ツールを開くと，HTML のソースコードが表示される．</li>
+<li>要素タブにて，Web ページの構造をツリー状に表示され，選択した要素の HTML が確認できる．</li>
+<li>要素をクリックして選択し，詳細を見ることができる．</li>
+</ul>
+<h3>HTML を書き換えてみる</h3>
+<ul>
+<li>選択した要素の HTML をダブルクリックすると編集が可能である．</li>
+<li>書き換えた内容はリアルタイムで反映されるが，リロードすると元に戻る．</li>
+<li>これらの機能により，簡単にページの構造を変更して試すことができる．</li>
+</ul>
+<h2>CSS</h2>
+<h3>CSS を見てみる</h3>
+<ul>
+<li>検証ツールのスタイルタブで，選択した要素に適用されている CSS を確認できる．</li>
+<li>CSS はスタイルシートと呼ばれ，HTML要素の見た目を変更するルールが記述されている．</li>
+<li>CSS セレクタとプロパティで構成される．</li>
+</ul>
+<h3>CSSを書き換えてみる</h3>
+<ul>
+<li>スタイルタブで適用されている CSS の値をダブルクリックして編集できる．</li>
+<li>変更した内容はリアルタイムで反映され，すぐにデザイン変更の効果を確認できる．</li>
+<li>リロードすると元に戻る．</li>
+</ul>
+<h3>レスポンシブデザインの確認</h3>
+<ul>
+<li>検証ツールで，異なるデバイスや画面サイズでの表示を確認できる．</li>
+<li>レスポンシブデザインは，ウェブページがさまざまなデバイスや画面サイズに適応するように設計されていることを意味する．</li>
+<li>デバイスごとの表示確認が簡単に行えるため，効率的にデザインを調整できる．</li>
+</ul>
+<h2>JavaScript</h2>
+<h3>JavaScriptを動かしてみる</h3>
+<ul>
+<li>検証ツールのコンソールタブでは，JavaScript のコードを入力して実行できる．</li>
+<li>エラーや警告も表示される．</li>
+<li>これにより，動的な機能を試したり，問題を解決する手がかりを得たりできる．</li>
+</ul>
+<p>以下の内容をConsole タブに貼り付けると，指定した場所の「文字の色」と「文字の大きさ」をランダムに変更する処理を追加できる．この処理は「処理（関数）を定義」しているだけなので，この時点では画面は変化しない．</p>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">function</span> <span class="pl-en">randomColor</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-s">'#'</span> <span class="pl-c1">+</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">floor</span><span class="pl-kos">(</span><span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">random</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">*</span> <span class="pl-c1">16777215</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toString</span><span class="pl-kos">(</span><span class="pl-c1">16</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">function</span> <span class="pl-en">randomFontSize</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">floor</span><span class="pl-kos">(</span><span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">random</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">*</span> <span class="pl-kos">(</span><span class="pl-c1">56</span> <span class="pl-c1">-</span> <span class="pl-c1">10</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-c1">+</span> <span class="pl-c1">10</span> <span class="pl-c1">+</span> <span class="pl-s">'px'</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">function</span> <span class="pl-en">changeTextProperties</span><span class="pl-kos">(</span><span class="pl-s1">className</span><span class="pl-kos">,</span> <span class="pl-s1">index</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">const</span> <span class="pl-s1">elements</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementsByClassName</span><span class="pl-kos">(</span><span class="pl-s1">className</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">elements</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">&gt;</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">index</span> <span class="pl-c1">&lt;</span> <span class="pl-s1">elements</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">const</span> <span class="pl-s1">element</span> <span class="pl-c1">=</span> <span class="pl-s1">elements</span><span class="pl-kos">[</span><span class="pl-s1">index</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+      <span class="pl-s1">element</span><span class="pl-kos">.</span><span class="pl-c1">style</span><span class="pl-kos">.</span><span class="pl-en">setProperty</span><span class="pl-kos">(</span><span class="pl-s">'color'</span><span class="pl-kos">,</span> <span class="pl-en">randomColor</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-s">'important'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-s1">element</span><span class="pl-kos">.</span><span class="pl-c1">style</span><span class="pl-kos">.</span><span class="pl-en">setProperty</span><span class="pl-kos">(</span><span class="pl-s">'font-size'</span><span class="pl-kos">,</span> <span class="pl-en">randomFontSize</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-s">'important'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-en">changeTextProperties</span><span class="pl-kos">(</span><span class="pl-s1">className</span><span class="pl-kos">,</span> <span class="pl-s1">index</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+      <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-en">changeTextProperties</span><span class="pl-kos">(</span><span class="pl-s1">className</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-c1">200</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'No elements with the specified class found'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p>続いて，以下のコードを貼り付けて実行すると，上記の処理が動作し，実際に画面の文字が変化する．</p>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-en">changeTextProperties</span><span class="pl-kos">(</span><span class="pl-s">'top-catch-01'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-en">changeTextProperties</span><span class="pl-kos">(</span><span class="pl-s">'top-catch-02'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-en">changeTextProperties</span><span class="pl-kos">(</span><span class="pl-s">'top-catch-03'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-en">changeTextProperties</span><span class="pl-kos">(</span><span class="pl-s">'top-catch-04'</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h2>まとめ</h2>
+<p>この講座では，検証ツールを使って Web アプリケーションの基本要素である HTML，CSS，JavaScript を体験した．これらの要素を理解し，簡単な変更を試すことで，Web アプリケーション開発への興味を持っていただくことを期待している．今後の学習で，さらにスキルを磨いていきましょう．</p>
+  </main>
+
+</body>
+
+</html>

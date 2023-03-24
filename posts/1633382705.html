@@ -88,7 +88,7 @@
     </nav>
     <hgroup>
       <h1>検証ツールで体験する Web アプリケーション</h1>
-      <p><i class="fa-regular fa-calendar-days"></i>Mar 21st, 2023
+      <p><i class="fa-regular fa-calendar-days"></i>Mar 24th, 2023
         <i class="fa-solid fa-tag"></i>javascript
         <i class="fa-solid fa-tag"></i>programming
       </p>
@@ -97,31 +97,61 @@
 
   <main>
     <h2>本講座の狙い</h2>
-<p>本講座はこれから開発にチャレンジする初心者に向けた講座で，Web アプリケーションの開発に興味を持ってもらうことを目的としている．検証ツールを使って Web アプリケーションの基本要素である HTML，CSS，JavaScript を体験し，実際に手を動かすことで理解を深める．</p>
+<ul>
+<li>Web アプリケーションの開発に興味を持ってもらう．</li>
+<li>検証ツールを使って Web アプリケーションの基本要素である HTML，CSS，JavaScript を体験し，実際に手を動かすことで理解を深める．</li>
+<li>HTML，CSS，JavaScript が書けるとブラウザであらゆる機能を実現できることを知る．</li>
+</ul>
 <h2>Web アプリケーションとは</h2>
-<h3>サーバとクライアント</h3>
+<p>Web アプリケーションはインターネットを通じて動作するプログラムであり，基本的に<strong>サーバ</strong>と<strong>クライアント</strong>という2つの主要な部分で構成されている．</p>
 <ul>
-<li>Web アプリケーションは，インターネットを介してサーバとクライアントが通信することで動作する</li>
-<li>サーバはデータやプログラムを提供し，クライアントはそれらを利用してユーザーに表示・操作する役割を担っている
+<li>
+<p>サーバ：</p>
 <ul>
-<li>サーバ：データベース，バックエンドプログラム</li>
-<li>クライアント：ブラウザ，フロントエンドプログラム</li>
+<li>インターネット上に設置された大きなコンピュータ</li>
+<li>データやプログラムを保管</li>
+<li>クライアントからのリクエストに応じて情報を提供</li>
+</ul>
+</li>
+<li>
+<p>クライアント：</p>
+<ul>
+<li>ユーザが使うコンピュータやスマートフォン</li>
+<li>サーバにアクセスし情報をリクエスト</li>
+<li>サーバから受け取った情報をもとにWebアプリケーションの画面を表示・操作</li>
 </ul>
 </li>
 </ul>
-<h3>ブラウザで動作する仕組み</h3>
-<ul>
-<li>Web アプリケーションは，主にブラウザ上で動作する</li>
-<li>HTML，CSS，JavaScript がそれぞれ役割を持っており，HTML がページの構造を，CSS がデザインを，JavaScript が動的な機能を担当している</li>
-</ul>
-<h2>検証ツールの使い方</h2>
+<h2>Web アプリケーションの動く仕組み</h2>
+<ol>
+<li>クライアントは Web アプリケーションにアクセスするためにインターネットブラウザを使って URL を入力</li>
+<li>サーバは URL に基づいて対応するデータやプログラムをクライアントに送信</li>
+<li>クライアントはサーバから受け取ったデータやプログラムをブラウザで解釈し、画面に表示</li>
+</ol>
+<p>クライアントでは，HTML がページの構造を，CSS がデザインを，JavaScript が動的な機能を担当している．</p>
+<div class="highlight highlight-text-adblock"><pre class="notranslate">  クライアント               サーバ
+      |                      <span class="pl-k">|</span>
+      |-----1.リクエスト------&gt;<span class="pl-k">|</span>
+      |                      <span class="pl-k">|</span>
+      |&lt;---2.データ/プログラム--<span class="pl-k">|</span>
+      |                      <span class="pl-k">|</span>
+      |------3.表示/操作-------<span class="pl-k">|</span>
+      |                      <span class="pl-k">|</span>
+</pre></div>
+<p>ブラウザで<a href="https://gsacademy.jp/" rel="nofollow">https://gsacademy.jp/</a>を開いたときの流れは以下の通りである．</p>
+<ol>
+<li>ブラウザにURLを入力する．</li>
+<li>サーバは Web サイトの HTML，CSS，JavaScript のコードをブラウザに送信する．</li>
+<li>ブラウザは受け取ったコードを読み，画面に情報を表示する．</li>
+</ol>
+<h2>検証ツールとその使い方</h2>
 <ul>
 <li>検証ツールは，ブラウザに組み込まれている開発者向けのツールである．</li>
 <li>HTML，CSS，JavaScript をリアルタイムで編集・デバッグできる．</li>
 <li>主要なブラウザで利用可能で，右クリックして「検証」を選択するか，キーボードショートカットで開くことができる．</li>
 <li>Elementsタブ，Console タブ，Network タブなど，さまざまな機能が用意されている．</li>
 </ul>
-<p>実際に下記のページを開き，検証ツールを開いてみよう．</p>
+<p>実際に下記のページで検証ツールを開いてみよう．</p>
 <p><a href="https://gsacademy.jp/" rel="nofollow">https://gsacademy.jp/</a></p>
 <h2>HTML</h2>
 <h3>HTML を見てみる</h3>
@@ -193,7 +223,7 @@
 <span class="pl-en">changeTextProperties</span><span class="pl-kos">(</span><span class="pl-s">'top-catch-03'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-en">changeTextProperties</span><span class="pl-kos">(</span><span class="pl-s">'top-catch-04'</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <h2>まとめ</h2>
-<p>この講座では，検証ツールを使って Web アプリケーションの基本要素である HTML，CSS，JavaScript を体験した．これらの要素を理解し，簡単な変更を試すことで，Web アプリケーション開発への興味を持っていただくことを期待している．今後の学習で，さらにスキルを磨いていきましょう．</p>
+<p>この講座では，検証ツールを使って Web アプリケーションの基本要素である HTML，CSS，JavaScript を体験した．他の Web サイトやアプリケーションでも簡単な変更を試すことで，Web アプリケーション開発のイメージが湧くだろう．今後のチャレンジで，さらにスキルを磨いていきましょう．</p>
   </main>
 
 </body>

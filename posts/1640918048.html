@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JMVGDHQTB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-8JMVGDHQTB');
+  </script>
+
+  <meta charset="UTF-8">
+  <title>CSS が 原因で Google Charts の Tooltips が表示されなかった</title>
+  <meta name="description" content="Notes on Programming.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title" content="CSS が 原因で Google Charts の Tooltips が表示されなかった">
+  <meta property="og:description" content="Notes on Programming.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;51">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/28992410?v=4">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@taroosg" />
+
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <link rel="icon" href="../favicon.png">
+
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- Fontawsome -->
+  <script src="../js/01f767a9a9.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      padding: 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    main>div>pre {
+      font-size: 14px;
+      line-height: var(--line-height);
+      padding: var(--spacing);
+      max-width: 100vw;
+      overflow: auto;
+    }
+
+    body>header>hgroup>p>i {
+      padding-left: 0.5em;
+      padding-right: 0.3em;
+    }
+
+    header>nav>ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="../" aria-label="Link to top page.">
+            <i class="fa-solid fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/taroosg" target="_blank" aria-label="Link to Twitter page.">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/taroosg" target="_blank" aria-label="Link to GitHub page.">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;51" target="_blank" aria-label="Link to Issue page.">
+            <i class="fa-solid fa-gear"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <hgroup>
+      <h1>CSS が 原因で Google Charts の Tooltips が表示されなかった</h1>
+      <p><i class="fa-regular fa-calendar-days"></i>Mar 26th, 2023
+        <i class="fa-solid fa-tag"></i>javascript
+        <i class="fa-solid fa-tag"></i>programming
+        <i class="fa-solid fa-tag"></i>css
+      </p>
+    </hgroup>
+  </header>
+
+  <main>
+    <h2>状況</h2>
+<ul>
+<li>Google Charts でグラフを作成し，表示された．</li>
+<li>カーソルを当てたときに表示される Tooltips が表示されない．</li>
+<li>コンソール見てもエラーは出ていない．</li>
+</ul>
+<h2>原因</h2>
+<p>下記の CSS を書いていたのが原因．他のページで svg 要素にクリックイベントを設定するために記述していた．</p>
+<div class="highlight highlight-source-css"><pre class="notranslate"><span class="pl-ent">svg</span> {
+  <span class="pl-c1">pointer-events</span><span class="pl-kos">:</span> none;
+}</pre></div>
+<h2>解決策</h2>
+<p>上記 CSS を削除したら解決．別ページのクリックイベント設定部分は別にクラス名を追加して対応すれば OK．</p>
+<h2>感想</h2>
+<p>JS の挙動を疑って時間溶かした．最終的に下記の手順で解決．いつもの総当り力技．</p>
+<ul>
+<li>HTML 要素を削除しつつ絞り込み</li>
+<li>CSS ファイルが影響していたため，CSS ファイルの中身を削除しつつ絞り込み</li>
+<li>原因箇所を特定</li>
+</ul>
+<p>以上だ( `･ω･)b</p>
+  </main>
+
+</body>
+
+</html>

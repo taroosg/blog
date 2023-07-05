@@ -2,4 +2,4 @@
 
 ## Deploy
 
-[https://taroosg.io/](https://taroosg.io/)
+[https://taroosg.dev/](https://taroosg.dev/)

@@ -24,18 +24,21 @@ octokit.rest.issues.listForRepo({
     fs.writeFileSync("index.html", index_html, "utf8");
 
     // Build post
-    target_issue = issues.data.filter((ti) => {
+    target_issues = issues.data.filter((ti) => {
       return ti.id == process.env.target_issue_id
     });
-    target_issue = target_issue[0]
+    // target_issue = target_issues[0]
 
-    markdown = target_issue.body
-    const issue_template = fs.readFileSync("templates/post.template.html", "utf8").toString();
-    octokit.rest.markdown.render({ "text": markdown, "mode": "gfm" })
-      .then(issue_html => {
-        target_issue.issue_html = issue_html
-        const issue_page = Mustache.render(issue_template, target_issue)
-        fs.writeFileSync("posts/" + process.env.target_issue_id + ".html", issue_page, "utf8");
-      });
+    target_issues.forEach(target_issue => {
+      markdown = target_issue.body
+      const issue_template = fs.readFileSync("templates/post.template.html", "utf8").toString();
+      octokit.rest.markdown.render({ "text": markdown, "mode": "gfm" })
+        .then(issue_html => {
+          target_issue.issue_html = issue_html
+          const issue_page = Mustache.render(issue_template, target_issue)
+          fs.writeFileSync("posts/" + process.env.target_issue_id + ".html", issue_page, "utf8");
+        });
+
+    });
 
   });

@@ -4,6 +4,7 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JMVGDHQTB"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7365457617485825" crossorigin="anonymous"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -105,14 +106,14 @@
 <li>ルートディレクトリに「.gitignore」ファイルを作成して git 管理したくないファイル名（or フォルダ名）を追加．</li>
 <li>【例】<code class="notranslate">firebase/index.js</code> を <code class="notranslate">.gitignore</code> に記述．</li>
 </ul>
-<div class="highlight highlight-text-adblock"><pre>// .gitignore に以下を追記
+<div class="highlight highlight-text-adblock"><pre class="notranslate">// .gitignore に以下を追記
 firebase/index.js
 // firebase フォルダの中全てを指定したい場合は以下
 firebase/</pre></div>
 <ul>
 <li>その後，下記コマンドを順番に実行</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre>// git add したことなければやらなくて OK（追跡対象リストから削除するコマンド）
+<div class="highlight highlight-source-shell"><pre class="notranslate">// git add したことなければやらなくて OK（追跡対象リストから削除するコマンド）
 git rm --cached ファイル名
 
 // あとはいつもどおり coommit して push すれば OK
@@ -122,14 +123,14 @@ git push origin master</pre></div>
 <ul>
 <li>【例】<code class="notranslate">firebase/index.js</code> を git 管理から外したい</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre>git rm --cached firebase/index.js</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git rm --cached firebase/index.js</pre></div>
 <p>フォルダごと指定したい場合は下記に変更．</p>
-<div class="highlight highlight-source-shell"><pre>git rm -r --cached ディレクトリ名
+<div class="highlight highlight-source-shell"><pre class="notranslate">git rm -r --cached ディレクトリ名
 // 以降のコマンドは同様</pre></div>
 <ul>
 <li>【例】firebase ディレクトリの中身全部を git 管理から外したい</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre>git rm -r --cached firebase</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git rm -r --cached firebase</pre></div>
 <p>【注意】</p>
 <ul>
 <li>--cached をつけないとファイル自体も削除される．</li>

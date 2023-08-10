@@ -4,6 +4,7 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JMVGDHQTB"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7365457617485825" crossorigin="anonymous"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -102,7 +103,7 @@
 <li>そもそも複数条件の文字列で抽出するのはどうすればよいのか．．．</li>
 </ul>
 <h2>データ例（適当）</h2>
-<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-s1">array</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">array</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>
   <span class="pl-kos">{</span>
     <span class="pl-c1">name</span>: <span class="pl-s">'hoge'</span><span class="pl-kos">,</span>
     <span class="pl-c1">message</span>: <span class="pl-s">'aaaaa'</span><span class="pl-kos">,</span>
@@ -140,10 +141,10 @@
 <li>複数条件は <code class="notranslate">|</code> を使用して OR 条件を設定する．</li>
 <li><code class="notranslate">()</code> の位置でハマった．「任意文字列(複数文字列条件)任意文字列」にしないといけない．</li>
 </ul>
-<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-s1">abArray</span> <span class="pl-c1">=</span> <span class="pl-s1">array</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-s1">x</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">x</span><span class="pl-kos">.</span><span class="pl-c1">message</span><span class="pl-kos">.</span><span class="pl-en">match</span><span class="pl-kos">(</span><span class="pl-pds"><span class="pl-c1">/</span>.<span class="pl-c1">*</span><span class="pl-kos">(</span>aa<span class="pl-c1">|</span>bb<span class="pl-kos">)</span>.<span class="pl-c1">*</span><span class="pl-c1">/</span></span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">abArray</span> <span class="pl-c1">=</span> <span class="pl-s1">array</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-s1">x</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">x</span><span class="pl-kos">.</span><span class="pl-c1">message</span><span class="pl-kos">.</span><span class="pl-en">match</span><span class="pl-kos">(</span><span class="pl-pds"><span class="pl-c1">/</span>.<span class="pl-c1">*</span><span class="pl-kos">(</span>aa<span class="pl-c1">|</span>bb<span class="pl-kos">)</span>.<span class="pl-c1">*</span><span class="pl-c1">/</span></span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">abArray</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p>実行結果</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-kos">(</span><span class="pl-c1">2</span><span class="pl-kos">)</span> <span class="pl-kos">[</span><span class="pl-kos">{</span>…<span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>…<span class="pl-kos">}</span><span class="pl-kos">]</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-kos">(</span><span class="pl-c1">2</span><span class="pl-kos">)</span> <span class="pl-kos">[</span><span class="pl-kos">{</span>…<span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>…<span class="pl-kos">}</span><span class="pl-kos">]</span>
   <span class="pl-c1">0</span>: <span class="pl-kos">{</span><span class="pl-c1">name</span>: <span class="pl-s">"hoge"</span><span class="pl-kos">,</span> <span class="pl-c1">message</span>: <span class="pl-s">"aaaaa"</span><span class="pl-kos">}</span>
   <span class="pl-c1">1</span>: <span class="pl-kos">{</span><span class="pl-c1">name</span>: <span class="pl-s">"fuga"</span><span class="pl-kos">,</span> <span class="pl-c1">message</span>: <span class="pl-s">"bbbbb"</span><span class="pl-kos">}</span>
   length: <span class="pl-c1">2</span></pre></div>
@@ -153,12 +154,12 @@
 <li>RegExp オブジェクトを使用する場合，引数に文字列形式で正規表現を記述すれば OK．</li>
 <li>今回は配列で検索文字列を定義しているため，OR 条件にするには <code class="notranslate">join()</code> を用いて <code class="notranslate">|</code> 区切りの文字列に変換した．</li>
 </ul>
-<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-s1">targetArray</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'c'</span><span class="pl-kos">,</span><span class="pl-s">'f'</span><span class="pl-kos">,</span><span class="pl-s">'g'</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">targetArray</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'c'</span><span class="pl-kos">,</span><span class="pl-s">'f'</span><span class="pl-kos">,</span><span class="pl-s">'g'</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
 <span class="pl-k">const</span> <span class="pl-s1">regExp</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">RegExp</span><span class="pl-kos">(</span><span class="pl-s">`.*(<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">targetArray</span><span class="pl-kos">.</span><span class="pl-en">join</span><span class="pl-kos">(</span><span class="pl-s">'|'</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>).*`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-k">const</span> <span class="pl-s1">cfgArray</span> <span class="pl-c1">=</span> <span class="pl-s1">array</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-s1">x</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">x</span><span class="pl-kos">.</span><span class="pl-c1">message</span><span class="pl-kos">.</span><span class="pl-en">match</span><span class="pl-kos">(</span><span class="pl-s1">regExp</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">cfgArray</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p>実行結果</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-kos">(</span><span class="pl-c1">3</span><span class="pl-kos">)</span> <span class="pl-kos">[</span><span class="pl-kos">{</span>…<span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>…<span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>…<span class="pl-kos">}</span><span class="pl-kos">]</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-kos">(</span><span class="pl-c1">3</span><span class="pl-kos">)</span> <span class="pl-kos">[</span><span class="pl-kos">{</span>…<span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>…<span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>…<span class="pl-kos">}</span><span class="pl-kos">]</span>
   <span class="pl-c1">0</span>: <span class="pl-kos">{</span><span class="pl-c1">name</span>: <span class="pl-s">"hoge"</span><span class="pl-kos">,</span> <span class="pl-c1">message</span>: <span class="pl-s">"ccccc"</span><span class="pl-kos">}</span>
   <span class="pl-c1">1</span>: <span class="pl-kos">{</span><span class="pl-c1">name</span>: <span class="pl-s">"hoge"</span><span class="pl-kos">,</span> <span class="pl-c1">message</span>: <span class="pl-s">"fffff"</span><span class="pl-kos">}</span>
   <span class="pl-c1">2</span>: <span class="pl-kos">{</span><span class="pl-c1">name</span>: <span class="pl-s">"piyo"</span><span class="pl-kos">,</span> <span class="pl-c1">message</span>: <span class="pl-s">"ggggg"</span><span class="pl-kos">}</span>

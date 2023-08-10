@@ -4,6 +4,7 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JMVGDHQTB"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7365457617485825" crossorigin="anonymous"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -131,7 +132,7 @@
 <h2>数値シートの準備</h2>
 <p>まずは画面に表示するための数値シートを作成する．</p>
 <p>数値シートの完成形は以下のような形になるだろう（以下は一例，数値は毎回ランダムに入る）．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-s1">dataSheet</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">dataSheet</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>
   <span class="pl-kos">[</span><span class="pl-c1">23</span><span class="pl-kos">,</span> <span class="pl-c1">62</span><span class="pl-kos">,</span> <span class="pl-c1">10</span><span class="pl-kos">,</span> <span class="pl-c1">97</span><span class="pl-kos">,</span> <span class="pl-c1">73</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
   <span class="pl-kos">[</span><span class="pl-c1">53</span><span class="pl-kos">,</span> <span class="pl-c1">76</span><span class="pl-kos">,</span> <span class="pl-c1">33</span><span class="pl-kos">,</span> <span class="pl-c1">37</span><span class="pl-kos">,</span> <span class="pl-c1">48</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
   <span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">96</span><span class="pl-kos">,</span> <span class="pl-c1">5</span><span class="pl-kos">,</span> <span class="pl-c1">28</span><span class="pl-kos">,</span> <span class="pl-c1">11</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
@@ -150,12 +151,12 @@
 <h3>1 から 99 の数値が入った配列を用意する．</h3>
 <p>これは簡単だ．<code class="notranslate">new Array()</code> を用いて新しい配列を作成し，<code class="notranslate">.keys()</code> をつなげれば順番に数値が入る．</p>
 <p>ビンゴゲームに 0 は存在しない（と記憶している）ので，最後に<code class="notranslate">filter()</code>を用いて 0 を除外した．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-s1">initialArray</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>...<span class="pl-k">new</span> <span class="pl-v">Array</span><span class="pl-kos">(</span><span class="pl-c1">100</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">x</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">x</span> <span class="pl-c1">!==</span> <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">initialArray</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>...<span class="pl-k">new</span> <span class="pl-v">Array</span><span class="pl-kos">(</span><span class="pl-c1">100</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">x</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">x</span> <span class="pl-c1">!==</span> <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p>実装が終わった後に気づいたが，ビンゴゲームの数値は 50 までだった可能性がある．しかしながら，ロジックには影響しないため特に修正はしていない．必要があれば 100 を 50 に書き換えれば良いだけである．</p>
 <h3>配列をシャッフルする関数を定義する．</h3>
 <p>手順 1 で「1 から 99 の重複しない配列」を作成した．次はこの配列の順番をランダムにする関数を定義する．</p>
 <p>シャッフルの工程で偏りが生じることは好ましくない．そこで，今回はダステンフェルドのアルゴリズムを採用した（このアルゴリズムを解説するには余白が狭すぎるため，適宜検索していただきたい）．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-en">createShuffledArray</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">array</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-en">createShuffledArray</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">array</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
   <span class="pl-k">const</span> <span class="pl-s1">tempArray</span> <span class="pl-c1">=</span> <span class="pl-s1">array</span><span class="pl-kos">;</span>
   <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">i</span> <span class="pl-c1">=</span> <span class="pl-s1">tempArray</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span><span class="pl-kos">;</span> <span class="pl-s1">i</span> <span class="pl-c1">&gt;</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">i</span><span class="pl-c1">--</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
     <span class="pl-k">const</span> <span class="pl-s1">j</span> <span class="pl-c1">=</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">floor</span><span class="pl-kos">(</span><span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">random</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">*</span> <span class="pl-kos">(</span><span class="pl-s1">i</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
@@ -167,12 +168,12 @@
 <span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
 <h3>1 と 2 を用いて「1 から 99 が入っていて順番がシャッフルされた配列」を作成する．</h3>
 <p>前項と前々項で作成したものを利用する．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-s1">shuffledArray</span> <span class="pl-c1">=</span> <span class="pl-en">createShuffledArray</span><span class="pl-kos">(</span><span class="pl-s1">initialArray</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">shuffledArray</span> <span class="pl-c1">=</span> <span class="pl-en">createShuffledArray</span><span class="pl-kos">(</span><span class="pl-s1">initialArray</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p>順番がランダムになっていることを確認できる．</p>
 <h3>配列を「指定した長さの配列に分割する」関数を定義する．</h3>
 <p>3 で作成したランダムな数の配列は 1 次元配列である．次はこの配列を元に「5*5 の 2 次元配列」を作成する必要がある．</p>
 <p><code class="notranslate">reduce()</code>を用いて，前から順番に 5 つを新しい配列に入れる処理を実行する．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-en">arrayChunk</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">[</span>...<span class="pl-s1">array</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-s1">size</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-en">arrayChunk</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">[</span>...<span class="pl-s1">array</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-s1">size</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
   <span class="pl-k">return</span> <span class="pl-s1">array</span><span class="pl-kos">.</span><span class="pl-en">reduce</span><span class="pl-kos">(</span>
     <span class="pl-kos">(</span><span class="pl-s1">acc</span><span class="pl-kos">,</span> <span class="pl-s1">value</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span>
       <span class="pl-s1">index</span> <span class="pl-c1">%</span> <span class="pl-s1">size</span> ? <span class="pl-s1">acc</span> : <span class="pl-kos">[</span>...<span class="pl-s1">acc</span><span class="pl-kos">,</span> <span class="pl-s1">array</span><span class="pl-kos">.</span><span class="pl-en">slice</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-s1">index</span> <span class="pl-c1">+</span> <span class="pl-s1">size</span><span class="pl-kos">)</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
@@ -184,9 +185,9 @@
 <h3>5. 3 と 4 を用いて「ランダムな数が入った 5*5 の 2 次元配列（=数値シート）」を作成する．</h3>
 <p>「ランダムな 1 次元配列」と「配列を分割する関数」を用いて 2 次元配列を作成する．行数は最後に <code class="notranslate">filter()</code> を用いて調整すればよいだろう．</p>
 <p><code class="notranslate">filter()</code> は非常に便利だ．配列に対して式を入力し，true になる要素のみを返してくれる．使い方も簡単だ．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-s1">dataSheet</span> <span class="pl-c1">=</span> <span class="pl-en">arrayChunk</span><span class="pl-kos">(</span><span class="pl-s1">shuffledArray</span><span class="pl-kos">,</span> <span class="pl-c1">5</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">x</span><span class="pl-kos">,</span> <span class="pl-s1">i</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">i</span> <span class="pl-c1">&lt;</span> <span class="pl-c1">5</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">dataSheet</span> <span class="pl-c1">=</span> <span class="pl-en">arrayChunk</span><span class="pl-kos">(</span><span class="pl-s1">shuffledArray</span><span class="pl-kos">,</span> <span class="pl-c1">5</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">x</span><span class="pl-kos">,</span> <span class="pl-s1">i</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">i</span> <span class="pl-c1">&lt;</span> <span class="pl-c1">5</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p>結果を確認すると，以下のような 2 次元配列が確認できるだろう（数値は毎回ランダム）．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-kos">[</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-kos">[</span>
   <span class="pl-kos">[</span><span class="pl-c1">23</span><span class="pl-kos">,</span> <span class="pl-c1">62</span><span class="pl-kos">,</span> <span class="pl-c1">10</span><span class="pl-kos">,</span> <span class="pl-c1">97</span><span class="pl-kos">,</span> <span class="pl-c1">73</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
   <span class="pl-kos">[</span><span class="pl-c1">53</span><span class="pl-kos">,</span> <span class="pl-c1">76</span><span class="pl-kos">,</span> <span class="pl-c1">33</span><span class="pl-kos">,</span> <span class="pl-c1">37</span><span class="pl-kos">,</span> <span class="pl-c1">48</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
   <span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">96</span><span class="pl-kos">,</span> <span class="pl-c1">5</span><span class="pl-kos">,</span> <span class="pl-c1">28</span><span class="pl-kos">,</span> <span class="pl-c1">11</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
@@ -197,11 +198,11 @@
 <h2>結果シートの作成</h2>
 <p>こちらは 2 次元の配列をすべて <code class="notranslate">false</code> で埋めるだけなのでとても簡単である．</p>
 <p>長さ 5 の配列を用意して，すべての要素を「長さ 5 で全要素が <code class="notranslate">false</code> の配列」にすれば良い．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-k">let</span> <span class="pl-s1">resultSheet</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>...<span class="pl-k">new</span> <span class="pl-v">Array</span><span class="pl-kos">(</span><span class="pl-c1">5</span><span class="pl-kos">)</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-v">Array</span><span class="pl-kos">(</span><span class="pl-c1">5</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">fill</span><span class="pl-kos">(</span><span class="pl-c1">false</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">let</span> <span class="pl-s1">resultSheet</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>...<span class="pl-k">new</span> <span class="pl-v">Array</span><span class="pl-kos">(</span><span class="pl-c1">5</span><span class="pl-kos">)</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-v">Array</span><span class="pl-kos">(</span><span class="pl-c1">5</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">fill</span><span class="pl-kos">(</span><span class="pl-c1">false</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p><code class="notranslate">new Array(5)</code> のみでは直接 map できないが，スプレッド構文を用いることで配列として処理することができるようになる．</p>
 <p><code class="notranslate">...</code> の表記を見るだけで可能性を感じずにはいられない．他にも，HTMLCollection をスプレッド構文を組み合わせることで配列に変換することができて非常に処理がしやすくなる．</p>
 <p>この配列は以下のような状態だ．この結果シートは，数値シートのいずれかがクリックされると，対応する座標の <code class="notranslate">false</code> を <code class="notranslate">true</code> に上書きする．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-kos">[</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-kos">[</span>
   <span class="pl-kos">[</span><span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
   <span class="pl-kos">[</span><span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
   <span class="pl-kos">[</span><span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
@@ -209,7 +210,7 @@
   <span class="pl-kos">[</span><span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
 <span class="pl-kos">]</span><span class="pl-kos">;</span></pre></div>
 <p>例：76（数値シート[1][2]）がクリックされた場合．．．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-kos">[</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-kos">[</span>
   <span class="pl-kos">[</span><span class="pl-c1">23</span><span class="pl-kos">,</span> <span class="pl-c1">62</span><span class="pl-kos">,</span> <span class="pl-c1">10</span><span class="pl-kos">,</span> <span class="pl-c1">97</span><span class="pl-kos">,</span> <span class="pl-c1">73</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
   <span class="pl-kos">[</span><span class="pl-c1">53</span><span class="pl-kos">,</span> <span class="pl-c1">76</span><span class="pl-kos">,</span> <span class="pl-c1">33</span><span class="pl-kos">,</span> <span class="pl-c1">37</span><span class="pl-kos">,</span> <span class="pl-c1">48</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
   <span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">96</span><span class="pl-kos">,</span> <span class="pl-c1">5</span><span class="pl-kos">,</span> <span class="pl-c1">28</span><span class="pl-kos">,</span> <span class="pl-c1">11</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
@@ -217,7 +218,7 @@
   <span class="pl-kos">[</span><span class="pl-c1">20</span><span class="pl-kos">,</span> <span class="pl-c1">9</span><span class="pl-kos">,</span> <span class="pl-c1">54</span><span class="pl-kos">,</span> <span class="pl-c1">38</span><span class="pl-kos">,</span> <span class="pl-c1">58</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
 <span class="pl-kos">]</span><span class="pl-kos">;</span></pre></div>
 <p>結果シートの[1][2]を true にする．縦横斜めのいずれかで true が揃ったらビンゴ．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-kos">[</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-kos">[</span>
   <span class="pl-kos">[</span><span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
   <span class="pl-kos">[</span><span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">true</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
   <span class="pl-kos">[</span><span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
@@ -228,7 +229,7 @@
 <h2>数値シートの画面表示</h2>
 <p>数値シートを DOM に変換してブラウザ上に表示する．</p>
 <p>予め HTML で <code class="notranslate">&lt;tbody&gt;</code> を用意しておき，その中に <code class="notranslate">&lt;tr&gt;&lt;td&gt;数値&lt;/td&gt;&lt;/tr&gt;</code> の形で描画すればよいだろう．以下のようなイメージだ．</p>
-<div class="highlight highlight-text-html-basic"><pre><span class="pl-kos">&lt;</span><span class="pl-ent">tbody</span> <span class="pl-c1">id</span>="<span class="pl-s">tbody</span>"<span class="pl-kos">&gt;</span>
+<div class="highlight highlight-text-html-basic"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">tbody</span> <span class="pl-c1">id</span>="<span class="pl-s">tbody</span>"<span class="pl-kos">&gt;</span>
   <span class="pl-kos">&lt;</span><span class="pl-ent">tr</span><span class="pl-kos">&gt;</span>
     <span class="pl-kos">&lt;</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>23<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
     <span class="pl-kos">&lt;</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>62<span class="pl-kos">&lt;/</span><span class="pl-ent">td</span><span class="pl-kos">&gt;</span>
@@ -239,7 +240,7 @@
   <span class="pl-c">&lt;!-- 以下同様 --&gt;</span>
 <span class="pl-kos">&lt;/</span><span class="pl-ent">tbody</span><span class="pl-kos">&gt;</span></pre></div>
 <p>上記のように描画するために以下の関数を用意した．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// 行のタグをつくる</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// 行のタグをつくる</span>
 <span class="pl-k">const</span> <span class="pl-en">createTd</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">rowArray</span><span class="pl-kos">,</span> <span class="pl-s1">rowIndex</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
   <span class="pl-k">return</span> <span class="pl-s1">rowArray</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span>
     <span class="pl-kos">(</span><span class="pl-s1">x</span><span class="pl-kos">,</span> <span class="pl-s1">i</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span>
@@ -276,7 +277,7 @@
 <p>DOM 作成時，id に数値シートの座標を指定している（1_2 の形式）ので，これを利用する．</p>
 <p><code class="notranslate">1_2</code>（文字列）を <code class="notranslate">[1, 2]</code>（配列）に直す．</p>
 <p><code class="notranslate">_</code> で <code class="notranslate">split()</code> すれば配列形式になるので，後は文字列を数値に直してやれば良い．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// 指定要素のid取得</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// 指定要素のid取得</span>
 <span class="pl-k">const</span> <span class="pl-en">getId</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">;</span>
 
 <span class="pl-c">// 0_0形式のidを数値の配列にする</span>
@@ -288,7 +289,7 @@
 <p>配列は参照渡しとなるためコピーの処理がわかりにくい．スプレッド構文を用いることで値渡しとなるため，安全にコピーが実行できる．他に <code class="notranslate">slice()</code> を用いた方法もあるが，間違いなくスプレッド構文のほうが手軽かつ誤りが発生しづらいためオススメである．</p>
 <p>入力された座標の配列から更新部分を指定し，false なら true に，true なら false に更新する．</p>
 <p>そして，更新した配列を関数から出力する．配列と配列を入力し，新しい配列を返す．．．何事も配列である．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// 入力配列の指定インデックスについてfalseとtrueを更新する</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// 入力配列の指定インデックスについてfalseとtrueを更新する</span>
 <span class="pl-k">const</span> <span class="pl-en">updateResultSheet</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">resultArray</span><span class="pl-kos">,</span> <span class="pl-s1">targetIndexArray</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
   <span class="pl-k">const</span> <span class="pl-s1">newResultArray</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>...<span class="pl-s1">resultArray</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
   <span class="pl-s1">newResultArray</span><span class="pl-kos">[</span><span class="pl-s1">targetIndexArray</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-s1">targetIndexArray</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-c1">!</span><span class="pl-s1">newResultArray</span><span class="pl-kos">[</span>
@@ -297,21 +298,21 @@
   <span class="pl-k">return</span> <span class="pl-s1">newResultArray</span><span class="pl-kos">;</span>
 <span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
 <p>実行する際は，以下のような記述になる．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-s1">resultSheet</span> <span class="pl-c1">=</span> <span class="pl-en">updateResultSheet</span><span class="pl-kos">(</span><span class="pl-s1">resultSheet</span><span class="pl-kos">,</span> <span class="pl-en">getIndexFromId</span><span class="pl-kos">(</span><span class="pl-en">getId</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-s1">resultSheet</span> <span class="pl-c1">=</span> <span class="pl-en">updateResultSheet</span><span class="pl-kos">(</span><span class="pl-s1">resultSheet</span><span class="pl-kos">,</span> <span class="pl-en">getIndexFromId</span><span class="pl-kos">(</span><span class="pl-en">getId</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p>結果シートを上書きせざるを得ないが，部分的な破壊的処理ではなく，新しい配列そのもので上書きしているため，予期しない動作のリスクは少ないだろう．</p>
 <p>（そろそろ関数の引数や戻り値に型が欲しくなるが，今回は Vanilla JS での実装であるためないものねだりである．．．）</p>
 <h3>結果シートの縦横斜めをチェックし，true が 5 つ（ビンゴ）または 4 つ（リーチ）を判定する．</h3>
 <p>さて，いよいよ大詰めの判定ロジックである．縦横斜めのいずれかが 5 つ（or4 つ）揃ったらビンゴやリーチの判定を行う．</p>
 <p>判定のためには，結果シートから「縦の配列」「横の配列」「斜めの配列」を抽出する必要がある．</p>
 <p>一番簡単なのは横の配列だ．行番号を指定するだけで良い．結果シートと行番号を入力し，該当する配列を返す関数を定義する．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// 2次元配列から行番号を指定して行のみの配列を作成</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// 2次元配列から行番号を指定して行のみの配列を作成</span>
 <span class="pl-k">const</span> <span class="pl-en">getRowArray</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">array</span><span class="pl-kos">,</span> <span class="pl-s1">rowNumber</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">array</span><span class="pl-kos">[</span><span class="pl-s1">rowNumber</span><span class="pl-kos">]</span><span class="pl-kos">;</span></pre></div>
 <p>縦方向の配列は少々厄介だが，列番号とインデックスの指定の仕方がわかっていれば大丈夫だろう．入力した列番号をインデックスに指定するように <code class="notranslate">map()</code> で処理を行ってやれば良い．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// 2次元配列から列番号を指定して列のみの配列を作成</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// 2次元配列から列番号を指定して列のみの配列を作成</span>
 <span class="pl-k">const</span> <span class="pl-en">getColumnArray</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">array</span><span class="pl-kos">,</span> <span class="pl-s1">columnNumber</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span>
   <span class="pl-s1">array</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">x</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">x</span><span class="pl-kos">[</span><span class="pl-s1">columnNumber</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p>斜めの配列はどうだろうか．こちらについては，正直手入力が一番早い気がする．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// 2次元配列から斜めの配列を作成</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// 2次元配列から斜めの配列を作成</span>
 <span class="pl-k">const</span> <span class="pl-en">getCrossArray</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">array</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
   <span class="pl-k">return</span> <span class="pl-kos">[</span>
     <span class="pl-kos">[</span><span class="pl-s1">array</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-s1">array</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-s1">array</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-s1">array</span><span class="pl-kos">[</span><span class="pl-c1">3</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-c1">3</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-s1">array</span><span class="pl-kos">[</span><span class="pl-c1">4</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-c1">4</span><span class="pl-kos">]</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
@@ -320,7 +321,7 @@
 <span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
 <p>以上で縦横斜めの配列を抽出できるようになった．これらを用いてチェックが必要な「横 5 つ」「縦 5 つ」「斜め 2 つ」の配列を一つの配列にまとめよう．</p>
 <p>結果シートを入力すれば，チェックが必要な配列をすべて抽出することができる（斜め配列のみ深さが異なるので，スプレッド構文を使用して均している）．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// 全チェックパターンの配列を集める</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// 全チェックパターンの配列を集める</span>
 <span class="pl-k">const</span> <span class="pl-en">getAllCheckArray</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">array</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
   <span class="pl-k">return</span> <span class="pl-kos">[</span>
     <span class="pl-en">getRowArray</span><span class="pl-kos">(</span><span class="pl-s1">array</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
@@ -341,7 +342,7 @@
 <p>ここで想定される入力配列は<code class="notranslate">getAllCheckArray</code>で生成された 2 次元配列である（型を．．．型をください．．．）．</p>
 <p>この 2 次元配列の各要素（true か false が要素の配列）に対して <code class="notranslate">filter()</code> 処理を行い，true の要素のみを残す．更に，<code class="notranslate">some()</code> を用いて，true の要素数が入力した数値と同じ配列の有無を確認する．存在すれば true，存在しなければ false が返る．</p>
 <p><code class="notranslate">some()</code> は指定した式に対して true の要素が一つ以上存在すれば true，それ以外は false を返す．式を渡せば一発で存在を確認できる，非常にクールな関数だ．値を有無を確認するには <code class="notranslate">includes()</code> を用いることもできるが，今回は式での判定を行いたいので <code class="notranslate">some()</code> を採用した．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// 指定した数のマスが揃っていればtrue</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// 指定した数のマスが揃っていればtrue</span>
 <span class="pl-k">const</span> <span class="pl-en">hasNumberOfTrue</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">allCheckArray</span><span class="pl-kos">,</span> <span class="pl-s1">number</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
   <span class="pl-k">return</span> <span class="pl-s1">allCheckArray</span>
     <span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">x</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">x</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-v">Boolean</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
@@ -351,15 +352,15 @@
 <h2>DOM 関連の操作と実際の処理系実装</h2>
 <p>ここまでで必要な処理がすべて揃った．後はこれらの処理を組み合わせて画面を描画し，クリックイベントを登録し，イベント内に「結果シートの更新」「ビンゴ（or リーチ）の判定」を記述すれば完成だ．</p>
 <p>はじめに，数値シートを元にして DOM の描画を行う．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// 画面に表示される2次元配列表の更新と更新時のクリックイベント登録</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// 画面に表示される2次元配列表の更新と更新時のクリックイベント登録</span>
 <span class="pl-k">const</span> <span class="pl-en">updateGame</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
   <span class="pl-c">// 表示を更新</span>
   <span class="pl-en">showTagsToTargetId</span><span class="pl-kos">(</span><span class="pl-s">"tbody"</span><span class="pl-kos">,</span> <span class="pl-en">createTbody</span><span class="pl-kos">(</span><span class="pl-s1">dataSheet</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">join</span><span class="pl-kos">(</span><span class="pl-s">""</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
 <p>続いて，クリックイベントの登録．td タグに対してイベント登録を行うが，ここでもスプレッド構文が活躍する．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementsByTagName</span><span class="pl-kos">(</span><span class="pl-s">"td"</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementsByTagName</span><span class="pl-kos">(</span><span class="pl-s">"td"</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p>で取得した要素は HTMLCollection なので，<code class="notranslate">forEach()</code> は実行できない．しかし，スプレッド構文を用いることで配列に変換できるため， <code class="notranslate">forEach()</code> を用いて各要素に <code class="notranslate">addEventListener</code> できる．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-en">updateGame</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-en">updateGame</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
   <span class="pl-en">showTagsToTargetId</span><span class="pl-kos">(</span><span class="pl-s">"tbody"</span><span class="pl-kos">,</span> <span class="pl-en">createTbody</span><span class="pl-kos">(</span><span class="pl-s1">dataSheet</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">join</span><span class="pl-kos">(</span><span class="pl-s">""</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
   <span class="pl-c">// クリックイベント登録</span>
   <span class="pl-kos">[</span>...<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementsByTagName</span><span class="pl-kos">(</span><span class="pl-s">"td"</span><span class="pl-kos">)</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">x</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
@@ -370,7 +371,7 @@
 <span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
 <p>後はクリックイベント内に結果表の更新処理と判定の処理を記述すれば良い．判定は三項演算子を用いて処理の重複がないように実装した．</p>
 <p>判定終了後は数値シートと結果シートから生成された DOM を更新するため，再帰処理で <code class="notranslate">updateGame()</code> を呼び出す．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// 結果表を更新</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// 結果表を更新</span>
 <span class="pl-s1">resultSheet</span> <span class="pl-c1">=</span> <span class="pl-en">updateResultSheet</span><span class="pl-kos">(</span><span class="pl-s1">resultSheet</span><span class="pl-kos">,</span> <span class="pl-en">getIndexFromId</span><span class="pl-kos">(</span><span class="pl-en">getId</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-c">// リーチかビンゴならアラート</span>
 <span class="pl-k">const</span> <span class="pl-s1">gameResult</span> <span class="pl-c1">=</span> <span class="pl-en">hasNumberOfTrue</span><span class="pl-kos">(</span><span class="pl-en">getAllCheckArray</span><span class="pl-kos">(</span><span class="pl-s1">resultSheet</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-c1">5</span><span class="pl-kos">)</span>
@@ -381,7 +382,7 @@
 <span class="pl-en">updateGame</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p>最終的な処理系の全体像は以下のとおりだ．</p>
 <p>（コード全体が見たい場合は成果物の GitHub リンクにあるからそちらを見て．．！）</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-en">updateGame</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-en">updateGame</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
   <span class="pl-en">showTagsToTargetId</span><span class="pl-kos">(</span><span class="pl-s">"tbody"</span><span class="pl-kos">,</span> <span class="pl-en">createTbody</span><span class="pl-kos">(</span><span class="pl-s1">dataSheet</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">join</span><span class="pl-kos">(</span><span class="pl-s">""</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
   <span class="pl-kos">[</span>...<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementsByTagName</span><span class="pl-kos">(</span><span class="pl-s">"td"</span><span class="pl-kos">)</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">x</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
     <span class="pl-s1">x</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">"click"</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
@@ -396,7 +397,7 @@
   <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
 <p>ビンゴゲームの開始時は，中心（座標だと[2][2]）は最初から空いている状態になるので，初回スタート時は下記の処理で調整した．内容としては数値シートと結果シートそれぞれを更新し，先に作成した <code class="notranslate">updateGame()</code> を実行して画面描画を行っているだけである．</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// 初回ゲーム開始</span>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// 初回ゲーム開始</span>
 <span class="pl-s1">dataSheet</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s">"free"</span><span class="pl-kos">;</span>
 <span class="pl-s1">resultSheet</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span>
 <span class="pl-en">updateGame</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>

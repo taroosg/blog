@@ -4,6 +4,7 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JMVGDHQTB"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7365457617485825" crossorigin="anonymous"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -114,7 +115,7 @@
 <li>ロックを解除する．</li>
 <li>ファイルを閉じる．</li>
 </ul>
-<div class="highlight highlight-text-html-php"><pre><span class="pl-ent">&lt;?php</span>
+<div class="highlight highlight-text-html-php"><pre class="notranslate"><span class="pl-ent">&lt;?php</span>
 <span class="pl-s1"><span class="pl-c1">$</span>array</span> = [
   <span class="pl-s">'text'</span> =&gt; <span class="pl-s">'hoge'</span>,
   <span class="pl-s">'date'</span> =&gt; <span class="pl-s">'2019-10-02'</span>,
@@ -143,7 +144,7 @@ fclose(<span class="pl-s1"><span class="pl-c1">$</span>file</span>);</pre></div>
 </ul>
 <h3>- file_put_contents() する方法</h3>
 <p><code class="notranslate">file_put_contents()</code> を使用すると一発で書き込みができる．</p>
-<div class="highlight highlight-text-html-php"><pre><span class="pl-ent">&lt;?php</span>
+<div class="highlight highlight-text-html-php"><pre class="notranslate"><span class="pl-ent">&lt;?php</span>
 <span class="pl-s1"><span class="pl-c1">$</span>array</span> = [
   <span class="pl-s">'text'</span> =&gt; <span class="pl-s">'hoge'</span>,
   <span class="pl-s">'date'</span> =&gt; <span class="pl-s">'2019-10-02'</span>,
@@ -177,7 +178,7 @@ file_put_contents(<span class="pl-s">'data/data.txt'</span>, json_encode(<span c
 <li>データを格納した配列を <code class="notranslate">json_encode()</code> して <code class="notranslate">echo</code> する．</li>
 <li>（ファイル読み込みできない場合は空の配列を返す）</li>
 </ul>
-<div class="highlight highlight-text-html-php"><pre><span class="pl-ent">&lt;?php</span>
+<div class="highlight highlight-text-html-php"><pre class="notranslate"><span class="pl-ent">&lt;?php</span>
 <span class="pl-s1"><span class="pl-c1">$</span>result_array</span> = [];
 
 <span class="pl-k">if</span> (file_exists(<span class="pl-s">'data/data.txt'</span>)) {
@@ -214,7 +215,7 @@ file_put_contents(<span class="pl-s">'data/data.txt'</span>, json_encode(<span c
 <p><code class="notranslate">array_map()</code> を用いて <code class="notranslate">$result_array</code> の各要素に対して <code class="notranslate">json_decode()</code> を実行し，最後に全体を <code class="notranslate">json_encode()</code> して返す．</p>
 </li>
 </ul>
-<div class="highlight highlight-text-html-php"><pre><span class="pl-ent">&lt;?php</span>
+<div class="highlight highlight-text-html-php"><pre class="notranslate"><span class="pl-ent">&lt;?php</span>
 <span class="pl-k">if</span> (file_exists(<span class="pl-s">'data/data.txt'</span>)) {
   <span class="pl-s1"><span class="pl-c1">$</span>result_array</span> = file(<span class="pl-s">'data/data.txt'</span>, <span class="pl-c1">FILE_IGNORE_NEW_LINES</span>);
   <span class="pl-k">echo</span> json_encode(array_map(<span class="pl-k">function</span> (<span class="pl-s1"><span class="pl-c1">$</span>str</span>) {

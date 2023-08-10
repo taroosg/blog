@@ -24,10 +24,12 @@ octokit.rest.issues.listForRepo({
     fs.writeFileSync("index.html", index_html, "utf8");
 
     // Build post
-    target_issues = issues.data.filter((ti) => {
-      return ti.id == process.env.target_issue_id
-    });
+    // target_issues = issues.data.filter((ti) => {
+    //   return ti.id == process.env.target_issue_id
+    // });
     // target_issue = target_issues[0]
+
+    target_issues = issues.data
 
     target_issues.forEach(target_issue => {
       markdown = target_issue.body

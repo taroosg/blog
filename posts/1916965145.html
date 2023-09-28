@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JMVGDHQTB"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7365457617485825" crossorigin="anonymous"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-8JMVGDHQTB');
+  </script>
+
+  <meta charset="UTF-8">
+  <title>Fresh と Deno KV で超速プロダクト開発</title>
+  <meta name="description" content="Notes on Programming.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title" content="Fresh と Deno KV で超速プロダクト開発">
+  <meta property="og:description" content="Notes on Programming.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;68">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/28992410?v=4">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@taroosg" />
+
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <link rel="icon" href="../favicon.png">
+
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- Fontawsome -->
+  <script src="../js/01f767a9a9.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      padding: 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    main>div>pre {
+      font-size: 14px;
+      line-height: var(--line-height);
+      padding: var(--spacing);
+      max-width: 100vw;
+      overflow: auto;
+    }
+
+    body>header>hgroup>p>i {
+      padding-left: 0.5em;
+      padding-right: 0.3em;
+    }
+
+    header>nav>ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="../" aria-label="Link to top page.">
+            <i class="fa-solid fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/taroosg" target="_blank" aria-label="Link to Twitter page.">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/taroosg" target="_blank" aria-label="Link to GitHub page.">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;68" target="_blank" aria-label="Link to Issue page.">
+            <i class="fa-solid fa-gear"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <hgroup>
+      <h1>Fresh と Deno KV で超速プロダクト開発</h1>
+      <p><i class="fa-regular fa-calendar-days"></i>Sep 28th, 2023
+        <i class="fa-solid fa-tag"></i>typescript
+        <i class="fa-solid fa-tag"></i>deno
+        <i class="fa-solid fa-tag"></i>fresh
+      </p>
+    </hgroup>
+  </header>
+
+  <main>
+    <h2>所感</h2>
+<ul>
+<li>業務ツールなどの個人開発などでストレージを使いたいことは多い．</li>
+<li>オンライン上に DB など用意するとなるとそれなりに面倒でコストもかかる．</li>
+<li>ほぼ何もせずに key-value ストレージが使用できる．すごい．</li>
+</ul>
+<h2>Fresh とは</h2>
+<p>Deno の Web フレームワーク．今回は詳しく触れないが，簡単な Web アプリケーションを実装するには十分な機能がある．</p>
+<h2>Deno KV とは</h2>
+<p>Deno で使用できる key-value ストレージ．ローカルで実行する場合は Deno KV は SQLite で動作し，アプリケーションを Deno Deploy にデプロイすると Deno KVデータベースは自動的に FoundationDB によって動作する．詳しくは<a href="https://docs.deno.com/kv/manual" rel="nofollow">ドキュメント</a>と<a href="https://deno.com/blog/kv" rel="nofollow">ブログ</a>参照．</p>
+<blockquote>
+<p>Deno KV is a <a href="https://en.wikipedia.org/wiki/Key%E2%80%93value_database" rel="nofollow">key-value database</a> built directly into the Deno runtime, available in the <a href="https://deno.land/api?unstable&amp;s=Deno.Kv" rel="nofollow">Deno.Kv namespace</a>. It can be used for many kinds of data storage use cases, but excels at storing simple data structures that benefit from very fast reads and writes. Deno KV is available in the Deno CLI and on <a href="https://docs.deno.com/kv/manual/on_deploy" rel="nofollow">Deno Deploy</a>.</p>
+</blockquote>
+<h2>実装</h2>
+<p>実装したソースコード全体は <a href="https://github.com/taroosg/fresh-kv">https://github.com/taroosg/fresh-kv</a>．</p>
+<p>Fresh でプロジェクトを作成するには下記コマンドを実行する．</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">deno run -A -r https://fresh.deno.dev</pre></div>
+<p>プロジェクトができたら，<code class="notranslate">deno.json</code> を編集する．Deno KV はベータ版（2023 年 9 月時点）であるため，アプリケーション実行時に <code class="notranslate">--unstable</code> オプションを付与する必要がある．</p>
+<p>下記のように，<code class="notranslate">"tasks"</code> の <code class="notranslate">"start"</code> 部分に <code class="notranslate">--unstable</code> を追加する．該当部分以外は操作しないため省略．</p>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+  <span class="pl-ent">"lock"</span>: <span class="pl-c1">false</span>,
+  <span class="pl-ent">"tasks"</span>: {
+    <span class="pl-ent">"check"</span>: <span class="pl-s"><span class="pl-pds">"</span>deno fmt --check &amp;&amp; deno lint &amp;&amp; deno check **/*.ts &amp;&amp; deno check **/*.tsx<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"start"</span>: <span class="pl-s"><span class="pl-pds">"</span>deno run -A --watch=static/,routes/ --unstable dev.ts<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"build"</span>: <span class="pl-s"><span class="pl-pds">"</span>deno run -A dev.ts build<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"preview"</span>: <span class="pl-s"><span class="pl-pds">"</span>deno run -A main.ts<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"update"</span>: <span class="pl-s"><span class="pl-pds">"</span>deno run -A -r https://fresh.deno.dev/update .<span class="pl-pds">"</span></span>
+  },
+  <span class="pl-ii">...</span>
+}</pre></div>
+<p>あとは <code class="notranslate">index.tsx</code> などに Deno KV を使用するためのコードを記述すればOK．今回は例として Twitter のような投稿アプリケーションを実装してみた．</p>
+<p>例えば，Deno KV に接続するには以下のようなコードを記述する．</p>
+<div class="highlight highlight-source-ts"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">kv</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-smi">Deno</span><span class="pl-kos">.</span><span class="pl-en">openKv</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p>Deno KV に接続したらデータの作成と参照を行ってみる．フォームから受け取ったデータを取り出し，Deno KV に保存するには以下のような記述となる．今回は key として <code class="notranslate">tweets</code> とタイムスタンプを指定している．</p>
+<div class="highlight highlight-source-ts"><pre class="notranslate"><span class="pl-c">// フォームデータの受取と取り出し</span>
+<span class="pl-k">const</span> <span class="pl-s1">formData</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">req</span><span class="pl-kos">.</span><span class="pl-en">formData</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">name</span> <span class="pl-c1">=</span> <span class="pl-s1">formData</span><span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">"name"</span><span class="pl-kos">)</span><span class="pl-kos">?.</span><span class="pl-en">toString</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">tweet</span> <span class="pl-c1">=</span> <span class="pl-s1">formData</span><span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">"tweet"</span><span class="pl-kos">)</span><span class="pl-kos">?.</span><span class="pl-en">toString</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">// 登録処理</span>
+<span class="pl-k">const</span> <span class="pl-s1">kv</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-smi">Deno</span><span class="pl-kos">.</span><span class="pl-en">openKv</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">await</span> <span class="pl-s1">kv</span><span class="pl-kos">.</span><span class="pl-en">set</span><span class="pl-kos">(</span><span class="pl-kos">[</span><span class="pl-s">"tweets"</span><span class="pl-kos">,</span> <span class="pl-smi">Date</span><span class="pl-kos">.</span><span class="pl-en">now</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+  tweet<span class="pl-kos">,</span>
+  name<span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p>続いて，データの参照は以下のようになる．key で <code class="notranslate">tweets</code> を指定し，100 件のデータを取得している．</p>
+<div class="highlight highlight-source-ts"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">iter</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">kv</span><span class="pl-kos">.</span><span class="pl-en">list</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">prefix</span>: <span class="pl-kos">[</span><span class="pl-s">"tweets"</span><span class="pl-kos">]</span> <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">limit</span>: <span class="pl-c1">100</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">tweets</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+<span class="pl-k">for</span> <span class="pl-k">await</span> <span class="pl-kos">(</span><span class="pl-k">const</span> <span class="pl-s1">res</span> <span class="pl-k">of</span> <span class="pl-s1">iter</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">tweets</span><span class="pl-kos">.</span><span class="pl-en">unshift</span><span class="pl-kos">(</span><span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<p>作成したコードを動かすと Deno KV にデータが保存される．取り出したデータは下記のような形となっている．</p>
+<pre class="notranslate"><code class="notranslate">[
+  { tweet: "おまえは今まで食ったパンの枚数をおぼえているのか?", name: "ディオ" },
+  { tweet: "君が", name: "ジョナサン" },
+  { tweet: "泣くまで", name: "ジョナサン" },
+  { tweet: "殴るのをやめないッ！", name: "ジョナサン" },
+  { tweet: "wryyy", name: "ディオ" }
+]
+
+</code></pre>
+<h2>本番環境</h2>
+<p>Deno Deploy を使用してアプリケーションの GitHub リポジトリを連携させる．以上だッ！</p>
+<p><a href="https://deno.com/deploy" rel="nofollow">Deno Deploy</a></p>
+<p>何を言ってるのかわからないと思うが DB の設定など何も行わなくても本番環境で Deno KV が使用できる．Deno Deploy の管理画面では 「KV」のタブがあり，データが保存されている場合にはデータの検索や確認ができる．</p>
+<h2>まとめ</h2>
+<ul>
+<li>とにかく簡単で現時点ではコストも考えなくて良い．</li>
+<li>業務ツールや簡単なアプリケーションの開発→デプロイ→運用の流れが超速．</li>
+<li>ベータ版であるため API 仕様の変更や機能の追加削除などは注意．</li>
+</ul>
+  </main>
+
+</body>
+
+</html>

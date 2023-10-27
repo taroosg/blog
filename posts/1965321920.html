@@ -98,11 +98,7 @@
 
   <main>
     <h2>状況</h2>
-<ul>
-<li>ユーザとチームが多対多で連携している．</li>
-<li>ユーザの権限として「所属しているチームを指定してデータを取得できる」状態にしたい．</li>
-<li>Policy にチームの情報も一緒に渡したい．</li>
-</ul>
+<p>Policy にユーザ以外の情報を渡したい．</p>
 <h2>問題</h2>
 <p>元々のコード</p>
 <div class="highlight highlight-text-html-php"><pre class="notranslate"><span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">viewAny</span>(<span class="pl-smi"><span class="pl-smi">User</span></span> <span class="pl-s1"><span class="pl-c1">$</span>user</span>)
@@ -110,26 +106,26 @@
   <span class="pl-c">//</span>
 }</pre></div>
 <p>こうしたい</p>
-<div class="highlight highlight-text-html-php"><pre class="notranslate"><span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">viewAny</span>(<span class="pl-smi"><span class="pl-smi">User</span></span> <span class="pl-s1"><span class="pl-c1">$</span>user</span>, <span class="pl-smi"><span class="pl-smi">Team</span></span> <span class="pl-s1"><span class="pl-c1">$</span>team</span>)
+<div class="highlight highlight-text-html-php"><pre class="notranslate"><span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">viewAny</span>(<span class="pl-smi"><span class="pl-smi">User</span></span> <span class="pl-s1"><span class="pl-c1">$</span>user</span>, <span class="pl-smi"><span class="pl-smi">Hoge</span></span> <span class="pl-s1"><span class="pl-c1">$</span>hoge</span>)
 {
   <span class="pl-c">//</span>
 }</pre></div>
 <p>Policy のコードを変更しただけでは，コントローラでうまくデータが渡らず Policy が適用されない．</p>
-<p>User は自動で認証ユーザの値を取得するため引数に含める必要はないが，Team を入力する方法がよくわからない（ドキュメントには第 2 引数に入れろと書いてある）．</p>
+<p>User は自動で認証ユーザの値を取得するため引数に含める必要はないが，Hoge を入力する方法がよくわからない（ドキュメントには第 2 引数に入れろと書いてある）．</p>
 <div class="highlight highlight-text-html-php"><pre class="notranslate"><span class="pl-c">// これはNG</span>
-<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-en">authorize</span>(<span class="pl-s">'viewAny'</span>, <span class="pl-v">Team</span>::class);
+<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-en">authorize</span>(<span class="pl-s">'viewAny'</span>, <span class="pl-v">Hoge</span>::class);
 
 <span class="pl-c">// これもNG</span>
-<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-en">authorize</span>(<span class="pl-s">'viewAny'</span>, <span class="pl-s1"><span class="pl-c1">$</span>team</span>);
+<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-en">authorize</span>(<span class="pl-s">'viewAny'</span>, <span class="pl-s1"><span class="pl-c1">$</span>hoge</span>);
 
 <span class="pl-c">// これもNG</span>
-<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-en">authorize</span>(<span class="pl-s">'viewAny'</span>, <span class="pl-s1"><span class="pl-c1">$</span>team</span>, <span class="pl-v">Team</span>::class);
+<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-en">authorize</span>(<span class="pl-s">'viewAny'</span>, <span class="pl-s1"><span class="pl-c1">$</span>hoge</span>, <span class="pl-v">Hoge</span>::class);
 
 <span class="pl-c">// これもNG</span>
-<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-en">authorize</span>(<span class="pl-s">'viewAny'</span>, <span class="pl-v">Team</span>::class, <span class="pl-s1"><span class="pl-c1">$</span>team</span>);</pre></div>
+<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-en">authorize</span>(<span class="pl-s">'viewAny'</span>, <span class="pl-v">Hoge</span>::class, <span class="pl-s1"><span class="pl-c1">$</span>hoge</span>);</pre></div>
 <h2>解決策</h2>
 <p>こうする．</p>
-<div class="highlight highlight-text-html-php"><pre class="notranslate"><span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-en">authorize</span>(<span class="pl-s">'viewAny'</span>, [<span class="pl-v">Team</span>::class, <span class="pl-s1"><span class="pl-c1">$</span>team</span>]);</pre></div>
+<div class="highlight highlight-text-html-php"><pre class="notranslate"><span class="pl-s1"><span class="pl-c1">$</span><span class="pl-smi">this</span></span>-&gt;<span class="pl-en">authorize</span>(<span class="pl-s">'viewAny'</span>, [<span class="pl-v">Hoge</span>::class, <span class="pl-s1"><span class="pl-c1">$</span>hoge</span>]);</pre></div>
 <h2>まとめ</h2>
 <p>Policy に引数追加する場合は第 2 引数を配列にして追加する．</p>
 <p>以上だ( `･ω･)b</p>

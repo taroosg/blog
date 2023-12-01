@@ -89,7 +89,7 @@
     </nav>
     <hgroup>
       <h1> Slack API の予約投稿機能とスプレッドシートを駆使して定期連絡を自動化した</h1>
-      <p><i class="fa-regular fa-calendar-days"></i>Nov 30th, 2023
+      <p><i class="fa-regular fa-calendar-days"></i>Dec 1st, 2023
         <i class="fa-solid fa-tag"></i>lifehack
         <i class="fa-solid fa-tag"></i>node.js
       </p>
@@ -123,14 +123,14 @@
 <li>設定された時間に Slack に自動的に投稿される．</li>
 </ol>
 <p>指定した時間に自動投稿を行うためには様々な方法があるが，Node.js を動かす回数（今回は 1 回 / 日）などを勘案すると予約投稿が最適という結論に達した．</p>
-<p>以下，流れに沿って詳細を解説する．</p>
+<p>以下，流れに沿って詳細を解説する．Slack API を試すときには，まず開発用の Workspace を用意して実験すると良いだろう．</p>
 <h2>Slack アプリの設定</h2>
 <p>アプリの作成は下記の UR Lから行える．</p>
 <p><a href="https://api.slack.com/apps" rel="nofollow">https://api.slack.com/apps</a></p>
 <p>様々な設定項目があるが，自動投稿する程度であれば権限と token の発行だけでOK．設定は「OAuth &amp; Permissions」部分から行う．</p>
 <p>自動投稿を行う Bot に必要となる token には「User OAuth Token（ユーザ自身が自動投稿を行うパターン）」と「Bot User OAuth Token（設定した Bot が自動投稿を行うパターン）」が存在するが，オススメは前者である．</p>
 <p>今回の場合，「自動投稿（講義の連絡など）の通知は不要」「自動投稿に対する返信は通知要」であるため，自分が投稿した扱いになる方が都合が良い．</p>
-<p>あとは OAuth &amp; Permissions 内の「Scopes」項目を「chat:write」に設定しておけば自動で投稿ができるようになる．</p>
+<p>あとは OAuth &amp; Permissions 内の「Scopes」項目を「chat:write」に設定しておけば自動で投稿ができるようになる．設定が完了したら，Slack 側の各チャンネル詳細「Integrations」→「Add an App」で作成したアプリをインストールする（チャンネルごとにインストールが必要）．</p>
 <h2>スプレッドシートでのデータ管理</h2>
 <p>スプレッドシートには下記のようなデータを記載している．token は上記で取得したもの，channel は自動投稿先のチャンネルである．</p>
 <table role="table">
@@ -262,6 +262,7 @@
     <span class="pl-k">throw</span> <span class="pl-v">Error</span><span class="pl-kos">(</span><span class="pl-s">'Error while posting message'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
   <span class="pl-kos">}</span>
 <span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p>スプレッドシートと Slack API 双方を実装したら全体をまとめて cron などで動作させる．毎日決まった時間に動いてくれれば OK なのでやり方は何でも良いと思う．</p>
 <h2>まとめ</h2>
 <p>今回はスプレッドシートと Slack API の予約投稿機能を用いて定期投稿の自動化を行った．スプレッドシートを用いることで投稿内容の管理・編集を行いやすくし，投稿内容以外にも token や日時の設定もスプレッドシートで完結できるよう工夫した．定期投稿はすべて自動化され，クラス開講時に講義日程の設定や Slack の token 取得などの設定を行うだけである．筆者の連絡漏れもゼロとなり「連絡しなければならない」精神的負担も皆無となった．</p>
 <p>また，自動投稿を実現するに際し，どのようなやり方を採用するべきか決めるまでに時間がかかった．Slack の API の仕様を確認し，予約投稿の機能を見出したことで今回の方法で実現する足がかりを掴むことができた．何かをハックしようと試みる際には，仕様をよく確認することがとても大切である．</p>

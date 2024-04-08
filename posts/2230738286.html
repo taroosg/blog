@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JMVGDHQTB"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7365457617485825" crossorigin="anonymous"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-8JMVGDHQTB');
+  </script>
+
+  <meta charset="UTF-8">
+  <title>特定の時間にiPhoneの画面をモノクロにする設定</title>
+  <meta name="description" content="Notes on Programming.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title" content="特定の時間にiPhoneの画面をモノクロにする設定">
+  <meta property="og:description" content="Notes on Programming.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;73">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/28992410?v=4">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@taroosg" />
+
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <link rel="icon" href="../favicon.png">
+
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- Fontawsome -->
+  <script src="../js/01f767a9a9.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      padding: 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    main>div>pre {
+      font-size: 14px;
+      line-height: var(--line-height);
+      padding: var(--spacing);
+      max-width: 100vw;
+      overflow: auto;
+    }
+
+    body>header>hgroup>p>i {
+      padding-left: 0.5em;
+      padding-right: 0.3em;
+    }
+
+    header>nav>ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="../" aria-label="Link to top page.">
+            <i class="fa-solid fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/taroosg" target="_blank" aria-label="Link to Twitter page.">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/taroosg" target="_blank" aria-label="Link to GitHub page.">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https:&#x2F;&#x2F;github.com&#x2F;taroosg&#x2F;blog&#x2F;issues&#x2F;73" target="_blank" aria-label="Link to Issue page.">
+            <i class="fa-solid fa-gear"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <hgroup>
+      <h1>特定の時間にiPhoneの画面をモノクロにする設定</h1>
+      <p><i class="fa-regular fa-calendar-days"></i>Apr 8th, 2024
+        <i class="fa-solid fa-tag"></i>lifehack
+      </p>
+    </hgroup>
+  </header>
+
+  <main>
+    <h2>なにこれ</h2>
+<p>入眠前にスマホを操作すると刺激が入ると睡眠が妨げられる．しかし，多くの作業をスマホで行うため，一切操作しないことは現実的ではない．画面がモノクロであれば刺激が少ないため，睡眠への影響を（多分）低減できる．</p>
+<h2>やること</h2>
+<ul>
+<li>
+<p>指定の時間に画面をモノクロにする．</p>
+</li>
+<li>
+<p>指定の時間に画面のモノクロを解除する．</p>
+</li>
+</ul>
+<p>なお，筆者の iPhone の端末設定は英語であるため，下記の項目も英語表記である．端末設定が日本語の場合はそれらしい項目を探してほしい．</p>
+<h2>事前準備</h2>
+<p>モノクロのカラーフィルターを設定しておく．</p>
+<ol>
+<li>
+<p>Settings → Accessibility</p>
+</li>
+<li>
+<p>Display &amp; Text Size</p>
+</li>
+<li>
+<p>Color Filters → Grayscale を選択</p>
+</li>
+</ol>
+<h2>指定の時間に画面をモノクロにする</h2>
+<p>Shortcuts のアプリケーションを使用して自動化する．</p>
+<ol>
+<li>
+<p>Shortcuts → Automation → +</p>
+</li>
+<li>
+<p>Time of Day に好きな時間を設定，Daily と Run immediately を選択</p>
+</li>
+<li>
+<p>New Blank Automation → Add Action → 「color」などで検索して Set Color Filters を選択して Done をタップして完了．</p>
+</li>
+</ol>
+<h2>指定の時間に画面のモノクロを解除する</h2>
+<p>モノクロにする操作とほぼ同様．</p>
+<ol>
+<li>
+<p>モノクロにする操作の 1 - 3 を 3 の Done タップ前まで実施する．操作 1 の Time of Day はモノクロを解除したい時間を設定する．</p>
+</li>
+<li>
+<p>「color filters On」の「On」をタップして「Off」に変更する．Done をタップして完了．</p>
+</li>
+</ol>
+<h2>任意のモノクロ操作と解除操作</h2>
+<p>任意のタイミングでモノクロとカラーを切り替えたい場合，ショートカットキー設定をしておくと便利である．</p>
+<ol>
+<li>
+<p>Settings → Accessibility に移動．</p>
+</li>
+<li>
+<p>Accessibility Shortcut → Color Filters にチェック．</p>
+</li>
+</ol>
+<p>上記操作を行うことで，電源ボタンのトリプルクリックでモノクロとカラーの切替が行えるようになる．</p>
+<h2>まとめ</h2>
+<p>睡眠より大事なことはないので，影響を減らせるとうれしい．</p>
+<p>以上だ( ` ･ω･)b</p>
+  </main>
+
+</body>
+
+</html>

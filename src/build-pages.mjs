@@ -38,12 +38,14 @@ octokit.rest.issues.listForRepo({
     target_issues.forEach(target_issue => {
       const markdown = target_issue.body
       const issue_template = fs.readFileSync("templates/post.template.html", "utf8").toString();
-      octokit.rest.markdown.render({ "text": markdown, "mode": "gfm" })
-        .then(issue_html => {
-          target_issue.issue_html = issue_html
-          const issue_page = Mustache.render(issue_template, target_issue)
-          fs.writeFileSync("posts/" + target_issue.id + ".html", issue_page, "utf8");
-        });
+      if(markdown){
+        octokit.rest.markdown.render({ "text": markdown, "mode": "gfm" })
+          .then(issue_html => {
+            target_issue.issue_html = issue_html
+            const issue_page = Mustache.render(issue_template, target_issue)
+            fs.writeFileSync("posts/" + target_issue.id + ".html", issue_page, "utf8");
+          });
+      }
 
     });
 

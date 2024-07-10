@@ -35,7 +35,7 @@ jobs:
             console.log(process.env)
 
       - name: Build pages
-        run: node src/build-pages.js
+        run: node src/build-pages.js --input-type=module
 
       - name: Git setting
         run: |

@@ -133,7 +133,7 @@
 <p>あとは OAuth &amp; Permissions 内の「Scopes」項目を「chat:write」に設定しておけば自動で投稿ができるようになる．設定が完了したら，Slack 側の各チャンネル詳細「Integrations」→「Add an App」で作成したアプリをインストールする（チャンネルごとにインストールが必要）．</p>
 <h2>スプレッドシートでのデータ管理</h2>
 <p>スプレッドシートには下記のようなデータを記載している．token は上記で取得したもの，channel は自動投稿先のチャンネルである．</p>
-<table role="table">
+<markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th>token</th>
@@ -171,7 +171,7 @@
 <td>本日課題の締切！</td>
 </tr>
 </tbody>
-</table>
+</table></markdown-accessiblity-table>
 <p>工夫した点としては以下．</p>
 <ul>
 <li>半年ごとに新しいクラスを担当するため Workspace は新しくなる．token は Workspace 単位で発行されるため，編集しやすいようコード側の環境変数などではなくスプレッドシート側で管理．</li>

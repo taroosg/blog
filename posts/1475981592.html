@@ -107,7 +107,7 @@
 </ul>
 <h2>テーブル構成</h2>
 <h3>articles</h3>
-<table role="table">
+<markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th>id</th>
@@ -140,9 +140,9 @@
 <td>baz</td>
 </tr>
 </tbody>
-</table>
+</table></markdown-accessiblity-table>
 <h3>users</h3>
-<table role="table">
+<markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th>id</th>
@@ -171,9 +171,9 @@
 <td>Fugo</td>
 </tr>
 </tbody>
-</table>
+</table></markdown-accessiblity-table>
 <h3>article_user</h3>
-<table role="table">
+<markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th>article_id</th>
@@ -206,7 +206,7 @@
 <td>4</td>
 </tr>
 </tbody>
-</table>
+</table></markdown-accessiblity-table>
 <h2>解決策</h2>
 <p>例えば，article_user テーブルの user_id が 1, 2, 4 のものを取得したいとする．</p>
 <p>予め user の id の配列を作っておき，whereIn の第 2 引数を利用すればOK．</p>

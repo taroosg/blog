@@ -20,7 +20,7 @@ octokit.rest.issues.listForRepo({
 
     // Format issue object
     const data = issues.data.map(issue => issue.updated_at_short = df.shortDate(issue.updated_at))
-    console.log("issues: ", issues)
+    // console.log("issues: ", issues)
 
     // Build index
     const index_template = fs.readFileSync("templates/index.template.html", "utf8").toString();
@@ -37,6 +37,7 @@ octokit.rest.issues.listForRepo({
 
     target_issues.forEach(target_issue => {
       const markdown = target_issue.body
+      console.log(markdown)
       const issue_template = fs.readFileSync("templates/post.template.html", "utf8").toString();
       if(markdown){
         octokit.rest.markdown.render({ "text": markdown, "mode": "gfm" })

@@ -19,7 +19,7 @@ octokit.rest.issues.listForRepo({
     issues.repo = process.env.repo
 
     // Format issue object
-    issues.data.map(issue => issue.updated_at_short = df.shortDate(issue.updated_at))
+    const data = issues.data.map(issue => issue.updated_at_short = df.shortDate(issue.updated_at))
     console.log("issues: ", issues)
 
     // Build index
@@ -33,7 +33,7 @@ octokit.rest.issues.listForRepo({
     // });
     // target_issue = target_issues[0]
 
-    target_issues = issues.data
+    target_issues = data
 
     target_issues.forEach(target_issue => {
       markdown = target_issue.body

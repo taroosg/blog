@@ -33,7 +33,7 @@ octokit.rest.issues.listForRepo({
     // });
     // target_issue = target_issues[0]
 
-    target_issues = data
+    const target_issues = data
 
     target_issues.forEach(target_issue => {
       markdown = target_issue.body

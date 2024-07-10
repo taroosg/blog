@@ -1,9 +1,12 @@
 // const { Octokit } = require("@octokit/rest");
 import { Octokit } from "@octokit/rest";
 const octokit = new Octokit({});
-const Mustache = require('mustache');
-const fs = require("fs");
-const df = require("./date-format.js")
+// const Mustache = require('mustache');
+import Mustache from 'mustache';
+// const fs = require("fs");
+import fs from "fs";
+// const df = require("./date-format.js")
+import df from "./date-format.js";
 
 // Build
 octokit.rest.issues.listForRepo({

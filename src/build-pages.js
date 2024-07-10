@@ -1,4 +1,5 @@
-const { Octokit } = require("@octokit/rest");
+// const { Octokit } = require("@octokit/rest");
+import { Octokit } from "@octokit/rest";
 const octokit = new Octokit({});
 const Mustache = require('mustache');
 const fs = require("fs");
